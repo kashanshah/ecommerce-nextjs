@@ -8,6 +8,8 @@ import {constants} from '../src/utils/constants';
 import {GoogleAnalytics} from '../src/components/google-analytics';
 import {useIsRTL} from '../src/utils/trans';
 import {AppProps} from 'next/app'
+import {ToastContainer} from "react-toastify";
+import "styles/globals.css"
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,7 @@ function MyApp({Component, pageProps}: AppProps) {
         <ReduxPersistGate loading={null} persistor={persistor}>
           <Component {...pageProps} />
           <PageLoading/>
+          <ToastContainer />
           <GoogleAnalytics gaId={constants?.ga?.id}/>
         </ReduxPersistGate>
       </Provider>

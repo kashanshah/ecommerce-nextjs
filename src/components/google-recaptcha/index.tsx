@@ -1,6 +1,5 @@
 import ReCAPTCHA from 'react-google-recaptcha';
-import { constants } from '@utils/constants';
-import { useColorMode } from '@chakra-ui/react';
+import { constants } from '../../utils/constants';
 import { RefObject } from 'react';
 
 type GoogleRecaptchaProps = {
@@ -10,11 +9,10 @@ type GoogleRecaptchaProps = {
 };
 export const GoogleRecaptcha = (props: GoogleRecaptchaProps) => {
   const { siteKey, onChange, reference } = props;
-  const { colorMode } = useColorMode();
 
   if (!constants?.recaptcha?.siteKey) {
     return null;
   }
 
-  return <ReCAPTCHA sitekey={siteKey} theme={colorMode} onChange={onChange} ref={reference} />;
+  return <ReCAPTCHA sitekey={siteKey} onChange={onChange} ref={reference} />;
 };

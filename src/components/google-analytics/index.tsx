@@ -21,7 +21,7 @@ export function GoogleAnalytics({ gaId }: { gaId: string }) {
       router.events.off('routeChangeComplete', handleRouteChange);
       router.events.off('hashChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, [router.events, gaId]);
 
   if (!gaId) {
     return null;

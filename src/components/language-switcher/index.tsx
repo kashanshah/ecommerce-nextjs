@@ -9,11 +9,18 @@ export const LanguageSwitcher = (props: { className?: string }) => {
   const {pathname, locale} = router;
 
   return <ul className={className}>
-    {Object.entries(constants?.languages)?.map(([key, val]) => {
-      return <li><a><span onClick={() => {
-        window.location.href = `/${key + pathname}`;
-      }}
-      >{trans(val)}</span></a></li>
+    {Object.entries(constants?.languages)?.map(([key, val], index) => {
+      return <li key={index}>
+        <a>
+          <span
+            onClick={() => {
+              window.location.href = `/${key + pathname}`;
+            }}
+          >
+          {trans(val)}
+        </span>
+        </a>
+      </li>
     })}
   </ul>
 

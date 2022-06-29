@@ -19,7 +19,7 @@ type HeaderProps = {
 
 export const Header = (props: HeaderProps) => {
   const {title, description, keywords, robots, language, author} = props;
-  const {locale} = useRouter();
+  const {pathname, locale} = useRouter();
   const dispatch = useDispatch()
 
   const [isOpen, setIsOpen] = useState(false);
@@ -38,14 +38,13 @@ export const Header = (props: HeaderProps) => {
 
 
         <meta charSet="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-        <meta property="og:locale" content="en_US"/>
+        <meta property="og:locale" content={locale}/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content={title || trans(constants?.seo?.title)}/>
-        <meta property="og:url" content="PAGE_URL"/>
-        <meta property="og:site_name" content="SITE_NAME"/>
+        <meta property="og:url" content={pathname}/>
+        <meta property="og:site_name" content={trans(constants?.seo?.title)}/>
         <meta property="og:image" content="#"/>
         <meta property="og:description" content={description || trans(constants?.seo?.description)}/>
       </NextHead>

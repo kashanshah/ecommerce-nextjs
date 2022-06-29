@@ -8,118 +8,11 @@ import React, {useState} from "react";
 import {Select} from "antd";
 import {ProductCard} from "../../components/product/card";
 import {Breadcrumb} from "../../components/breadcrumb";
+import {products} from "../../utils/data";
 
 export const ShopScreen = () => {
 
   const [isGrid, setIsGrid] = useState(true);
-
-  const products = [
-    {
-      id: '1',
-      name: 'Product One',
-      image: '/assets/img/product/product1.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 4.8,
-        noOfRatings: 3,
-      },
-    },
-    {
-      id: '2',
-      name: 'Product Two',
-      image: '/assets/img/product/product2.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 4.3,
-        noOfRatings: 35,
-      },
-    },
-    {
-      id: '3',
-      name: 'Product Three',
-      image: '/assets/img/product/product3.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 5,
-        noOfRatings: 2,
-      },
-    },
-    {
-      id: '4',
-      name: 'Product Four',
-      image: '/assets/img/product/product4.jpg',
-      prices: {
-        salePrice: '$30.00',
-        price: '$25.00'
-      },
-      ratings: {
-        rating: 3.7,
-        noOfRatings: 101,
-      },
-    },
-    {
-      id: '1',
-      name: 'Product One',
-      image: '/assets/img/product/product1.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 4.8,
-        noOfRatings: 3,
-      },
-    },
-    {
-      id: '2',
-      name: 'Product Two',
-      image: '/assets/img/product/product2.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 4.3,
-        noOfRatings: 35,
-      },
-    },
-    {
-      id: '3',
-      name: 'Product Three',
-      image: '/assets/img/product/product3.jpg',
-      prices: {
-        salePrice: '$20.00',
-        price: '$26.00'
-      },
-      ratings: {
-        rating: 5,
-        noOfRatings: 2,
-      },
-    },
-    {
-      id: '4',
-      name: 'Product Four',
-      image: '/assets/img/product/product4.jpg',
-      prices: {
-        salePrice: '$30.00',
-        price: '$25.00'
-      },
-      ratings: {
-        rating: 3.7,
-        noOfRatings: 101,
-      },
-    },
-  ];
-
 
   return (
     <PageWrapper>

@@ -38,7 +38,6 @@ export const Footer = (props: FooterProps) => {
                 <ul className="d-flex justify-content-end">
                   <li><Link href="/home">HOME</Link></li>
                   <li><Link href="/shop">Shop</Link></li>
-                  <li><a href="product-gallery-left.html">Product</a></li>
                   <li><a href="/">pages</a></li>
                   <li><a href="blog.html">Blog</a></li>
                   <li><Link href="/contact">CONTACT</Link></li>

@@ -1,22 +1,38 @@
 import {RatingStars} from "../rating-stars";
 import React from "react";
+import Link from "next/link";
+
+export const ProductPrice =(props: {prices: {price: string | number; salePrice?: string | number}}) => {
+  const {prices} = props;
+
+  return <>{
+    prices?.salePrice ?
+      <>
+        <span className="current_price">{prices?.salePrice}</span>
+        <span className="old_price">{prices?.price}</span>
+      </>
+      :
+      <span className="current_price">{prices?.price}</span>
+  }</>
+}
 
 export const ProductCard = (props: { product }) => {
   const {product} = props;
+
   return <div className="single_product">
     <div className="product_thumb">
-      <a href="product-gallery-left.html">
-        <img className="primary_img" src="assets/img/product/product1.jpg" alt="consectetur" />
-      </a>
+      <Link href={`/product/${product.slug}`}>
+        <img className="primary_img" src={product.image} alt={product.name} />
+      </Link>
       <div className="product_action">
         <ul>
           <li className="wishlist"><a href="wishlist.html" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
-                                      data-tippy-arrow="true" data-tippy-placement="left"><i className="icon-heart icons"></i></a></li>
+                                      data-tippy-arrow="true" data-tippy-placement="left"><i className="icon-heart icons"/></a></li>
 
           <li className="quick_view"><a data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i
-            className="icon-size-fullscreen icons"></i></a></li>
+            className="icon-size-fullscreen icons"/></a></li>
           <li className="compare"><a data-tippy="Compare" href="compare.html" data-tippy-inertia="true" data-tippy-delay="50"
-                                     data-tippy-arrow="true" data-tippy-placement="left"><i className="icon-refresh icons"></i></a></li>
+                                     data-tippy-arrow="true" data-tippy-placement="left"><i className="icon-refresh icons"/></a></li>
         </ul>
       </div>
       <div className="product_label">
@@ -24,39 +40,24 @@ export const ProductCard = (props: { product }) => {
       </div>
     </div>
     <div className="product_content grid_content text-center">
-      <div className="product_ratting">
-        <ul className="d-flex justify-content-center">
-          <li><a href="#"><i className="ion-android-star"></i></a></li>
-          <li><a href="#"><i className="ion-android-star"></i></a></li>
-          <li><a href="#"><i className="ion-android-star"></i></a></li>
-          <li><a href="#"><i className="ion-android-star"></i></a></li>
-          <li><a href="#"><i className="ion-android-star"></i></a></li>
-          <li><span>(2)</span></li>
-        </ul>
-      </div>
-      <h4 className="product_name"><a href="product-gallery-left.html">Basic Joggin Shorts</a></h4>
+      <RatingStars rating={product.ratings?.rating} noOfRatings={product.ratings?.noOfRatings}/>
+      <h4 className="product_name"><a href={`/product/${product.slug}`}>{product.name}</a></h4>
       <div className="price_box">
-        <span className="current_price">$43.00</span>
-        <span className="old_price">$46.00</span>
+        <ProductPrice prices={product.prices} />
       </div>
       <div className="add_to_cart">
         <a className="btn btn-primary" href="#" data-tippy="Add To Cart" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
       </div>
     </div>
     <div className="product_list_content">
-      <h4 className="product_name"><a href="product-gallery-left.html">Basic Joggin Shorts</a></h4>
+      <h4 className="product_name"><Link href={`/product/${product.slug}`}>{product.name}</Link></h4>
       <p><a href="#">shows</a></p>
-      <div className="price_box">
-        <span className="current_price">$43.00</span>
-        <span className="old_price">$46.00</span>
-      </div>
+      <ProductPrice prices={product.prices} />
       <div className="product_desc">
-        <p>Morbi pulvinar mollis metus, vel tempus orci convallis ut. Vestibulum finibus posuere orci, sed venenatis sem eleifend et. Vivamus vitae risus vitae orci vestibulum faucibus condimentum sit amet eros. Sed mattis ligula in tempus
-          pharetra. Nullam quis augue ac tellus tempor congue</p>
+        <p>{product.description}</p>
       </div>
       <div className="add_to_cart">
         <a className="btn btn-primary" href="#" data-tippy="Add To Cart" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
-
       </div>
     </div>
   </div>

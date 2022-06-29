@@ -11,7 +11,7 @@ export const MiniCart = () => {
       </div>
       <div className="cart_item">
         <div className="cart_img">
-          <a href="#"><img src="assets/img/product/product1.jpg" alt="" /></a>
+          <a href="#"><img src="/assets/img/product/product1.jpg" alt="" /></a>
         </div>
         <div className="cart_info">
           <a href="#">Primis In Faucibus</a>
@@ -23,7 +23,7 @@ export const MiniCart = () => {
       </div>
       <div className="cart_item">
         <div className="cart_img">
-          <a href="#"><img src="assets/img/product/product2.jpg" alt=""/></a>
+          <a href="#"><img src="/assets/img/product/product2.jpg" alt=""/></a>
         </div>
         <div className="cart_info">
           <a href="#">Letraset Sheets</a>

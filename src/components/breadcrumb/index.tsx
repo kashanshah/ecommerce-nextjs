@@ -13,7 +13,7 @@ export const Breadcrumb = (props: BreadcrumbProps) => {
       return last ? (
         <span>{route.breadcrumbName}</span>
       ) : (
-        <Link href={paths.join('/')}>{route.breadcrumbName}</Link>
+        <Link href={route.path}>{route.breadcrumbName}</Link>
       );
     }} {...rest}/>
   </div>

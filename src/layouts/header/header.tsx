@@ -114,15 +114,6 @@ export const Header = (props: HeaderProps) => {
                               </ul>
                             </li>
                             <li>
-                              <span className="title">Product Style</span>
-                              <ul>
-                                <li><a href="product-gallery-left.html">Gallery Left</a></li>
-                                <li><a href="product-gallery-right.html">Gallery right</a></li>
-                                <li><a href="product-sticky.html">Product Sticky</a></li>
-                                <li><a href="product-affiliate.html">Product Affiliate</a></li>
-                              </ul>
-                            </li>
-                            <li>
                               <span className="title">Shop Related</span>
                               <ul>
                                 <li><a href="cart.html">Cart</a></li>

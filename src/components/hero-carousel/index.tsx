@@ -1,6 +1,7 @@
 import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from 'react-responsive-carousel';
+import Link from 'next/link';
 
 export const HeroCarousel = () => {
 
@@ -57,7 +58,7 @@ export const HeroCarousel = () => {
                 <span>Lookbook</span>
                 <h1>fashion trend for autum girls with vibes</h1>
                 <p>We love seeing how our Edon wearers like <br/> to wear their Norda</p>
-                <a className="btn btn-primary" href="shop.html">Explore Now</a>
+                <Link className="btn btn-primary" href="/shop">Explore Now</Link>
               </div>
             </div>
           </div>
@@ -71,7 +72,7 @@ export const HeroCarousel = () => {
                 <span>Handbag</span>
                 <h1>Men Collection Preview</h1>
                 <p className="text-white">The collection grows each year with original stories and design features by Edons employees.</p>
-                <a className="btn btn-primary" href="shop.html">Explore Now</a>
+                <Link className="btn btn-primary" href="/shop">Explore Now</Link>
               </div>
             </div>
           </div>

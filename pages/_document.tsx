@@ -22,8 +22,6 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/assets/css/jquery-ui.min.css"/>
           <link rel="stylesheet" href="/assets/css/magnific-popup.css"/>
 
-          <link rel="stylesheet" href="/assets/css/style.css?asdasd"/>
-
         </Head>
         <body>
         <Main/>

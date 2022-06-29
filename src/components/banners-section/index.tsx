@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 
 type BannerSectionProps = {
   type?: string;
@@ -21,7 +22,7 @@ export const BannersSection = (props: BannerSectionProps) => {
               <figcaption className="banner_text position-absolute">
                 <h3>Zara Pattern <br/> backpacks</h3>
                 <p>Learn How To Make More Money <br/> With Cloth.</p>
-                <a className="btn btn-primary" href="shop.html">Shop Now</a>
+                <Link className="btn btn-primary" href="/shop">Shop Now</Link>
               </figcaption>
             </figure>
             <figure className="single_banner position-relative">
@@ -51,7 +52,7 @@ export const BannersSection = (props: BannerSectionProps) => {
                 <div className="banner_text position-absolute">
                   <h3>Minimalist <br/> sneaker</h3>
                   <p>Stretch, fresh-cool help you alway <br/> comfortable</p>
-                  <a className="btn btn-primary" href="shop.html">Shop Now</a>
+                  <Link className="btn btn-primary" href="/shop">Shop Now</Link>
                 </div>
                 <div className="banner_tag">
                   <span>new arrivals <br/> men</span>
@@ -64,7 +65,7 @@ export const BannersSection = (props: BannerSectionProps) => {
                 <div className="banner_text position-absolute text__style2">
                   <h3><span>50%</span> OFF <br/> for Autumn</h3>
                   <p>Shoes Will Make You Tons Of Cash. <br/> Heres How!</p>
-                  <a className="btn btn-primary" href="shop.html">Shop Now</a>
+                  <Link className="btn btn-primary" href="/shop">Shop Now</Link>
                 </div>
                 <div className="banner_tag">
                   <span>mega sale</span>

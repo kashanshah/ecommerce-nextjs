@@ -9,6 +9,8 @@ import {GoogleAnalytics} from '../src/components/google-analytics';
 import {useIsRTL} from '../src/utils/trans';
 import {AppProps} from 'next/app'
 import {ToastContainer} from "react-toastify";
+import 'antd/dist/antd.css';
+import 'styles/style.css';
 import "styles/globals.css"
 
 const queryClient = new QueryClient();

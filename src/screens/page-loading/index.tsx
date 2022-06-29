@@ -1,5 +1,6 @@
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
+import React from "react";
 
 type PageLoadingProps = {
   isLoading?: boolean;
@@ -8,11 +9,9 @@ type PageLoadingProps = {
 export const PageLoading = (props: PageLoadingProps) => {
   const isLoading = useSelector((state: RootState) => state.common.isPageLoading);
 
-  return null;
-
   return (
-    <div className={`loader_bg ${isLoading && 'show'}`}>
-      <div className="loader"><img src="/images/loading.gif" alt="#"/></div>
+    <div className={`body_overlay ${isLoading && 'active'}`}>
+
     </div>
   );
 };

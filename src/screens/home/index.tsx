@@ -7,6 +7,7 @@ import {Footer} from "../../layouts/footer";
 import {SubscribeToNewsletter} from "../../components/subscribe-to-newsletter";
 import {BannersSection} from "../../components/banners-section";
 import React from "react";
+import {BestSellerProducts} from "../../components/best-seller-products";
 
 export const HomeScreen = () => {
 
@@ -17,6 +18,8 @@ export const HomeScreen = () => {
 
       <BannersSection/>
       <BannersSection type='two' title='Featured Collection'/>
+
+      <BestSellerProducts/>
 
       <SubscribeToNewsletter/>
       <Footer/>

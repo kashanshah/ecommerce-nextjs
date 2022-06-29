@@ -36,8 +36,8 @@ export const Footer = (props: FooterProps) => {
             <div className="footer_widget_list text-end">
               <div className="footer_menu">
                 <ul className="d-flex justify-content-end">
-                  <li><Link href="/">HOME</Link></li>
-                  <li><a href="shop.html">Shop</a></li>
+                  <li><Link href="/home">HOME</Link></li>
+                  <li><Link href="/shop">Shop</Link></li>
                   <li><a href="product-gallery-left.html">Product</a></li>
                   <li><a href="/">pages</a></li>
                   <li><a href="blog.html">Blog</a></li>

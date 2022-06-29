@@ -18,7 +18,7 @@ export const Footer = (props: FooterProps) => {
           <div className="col-lg-5 col-md-5 col-sm-5">
             <div className="footer_widget_list">
               <div className="footer_logo">
-                <a href="#"><img src="/assets/img/logo/logo.png" alt=""/></a>
+                <Link href="/"><img src="/assets/img/logo/logo.png" alt="" className="img-fluid"/></Link>
               </div>
               <div className="footer_contact">
                 <div className="footer_contact_list">

@@ -3,6 +3,7 @@ import {useMutation} from "react-query";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import {constants} from "../../utils/constants";
 import React, {useState} from "react";
+import {SocialLinks} from "../social-links";
 
 type ContactUsRequestBody = {
   name: string;
@@ -155,18 +156,7 @@ export const ContactUsSection = (props) => {
                   <a href="#">{constants?.address}</a>
                 </li>
               </ul>
-              <ul className="social-link">
-                <li><a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-delay="50"
-                       data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-twitter"/></a></li>
-                <li><a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-delay="50"
-                       data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-facebook"/></a></li>
-                <li><a href="#" data-tippy="googleplus" data-tippy-inertia="true" data-tippy-delay="50"
-                       data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-googleplus-outline"/></a></li>
-                <li><a href="#" data-tippy="Instagram" data-tippy-inertia="true" data-tippy-delay="50"
-                       data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-instagram-outline"/></a></li>
-                <li><a href="#" data-tippy="Youtube" data-tippy-inertia="true" data-tippy-delay="50"
-                       data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-youtube"/></a></li>
-              </ul>
+              <SocialLinks className="social-link"/>
             </div>
           </div>
         </div>
@@ -177,27 +167,5 @@ export const ContactUsSection = (props) => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.693667617067!2d144.946279515845!3d-37.82064364221098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4cee0cec83%3A0xd019c5f69915a4a0!2sCollins%20St%2C%20West%20Melbourne%20VIC%203003%2C%20Australia!5e0!3m2!1sen!2sbd!4v1607512676761!5m2!1sen!2sbd"/>
     </div>
   </main>
-
-  return <div className="py-5">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12 ">
-        </div>
-        <div className="col-md-12">
-          <form id="request" className="main_form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="row">
-              <div className="col-md-12">
-              </div>
-              <div className="col-md-12">
-              </div>
-              <div className="col-md-12">
-                <button className="send_btn" disabled={isLoading}>Send</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
 }

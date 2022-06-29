@@ -55,7 +55,7 @@ export const SubscribeToNewsletter = (props: SubscribeToNewsletterProps) => {
   }
 
   return (
-    <section className="newsletter_section pb-95">
+    <section className="newsletter_section pt-95 pb-95">
       <div className="container">
         <div className="row">
           <div className="col-12">

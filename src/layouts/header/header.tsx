@@ -10,6 +10,7 @@ import {PageSearchBox} from "../../components/page-search-box";
 import {useDispatch} from "react-redux";
 import {updateIsSearchOpen} from "../../redux/common-slice";
 import {SocialLinks} from "../../components/social-links";
+import {LanguageSwitcher} from "../../components/language-switcher";
 
 type HeaderProps = {
   [key: string]: any;
@@ -68,7 +69,7 @@ export const Header = (props: HeaderProps) => {
                 </div>
                 <div className='d-flex header_social'>
                   <span>Follow us</span>
-                  <SocialLinks />
+                  <SocialLinks/>
                 </div>
                 <div className="language_currency">
                   <ul className="d-flex">
@@ -172,16 +173,12 @@ export const Header = (props: HeaderProps) => {
                   <div className="header_top_sidebar d-flex align-items-center">
                     <div className='d-flex header_social'>
                       <span>Follow us</span>
-                      <SocialLinks />
+                      <SocialLinks/>
                     </div>
                     <div className="language_currency">
                       <ul className="d-flex">
-                        <li className="language"><a href="#"> Eng <i className="icon-right ion-ios-arrow-down"/></a>
-                          <ul className="dropdown_language">
-                            <li><a href="#">French</a></li>
-                            <li><a href="#">Spanish</a></li>
-                            <li><a href="#">Russian</a></li>
-                          </ul>
+                        <li className="language"><a href="#">{locale} <i className="icon-right ion-ios-arrow-down"/></a>
+                          <LanguageSwitcher />
                         </li>
                         <li className="currency"><a href="#"> USd <i className="icon-right ion-ios-arrow-down"/></a>
                           <ul className="dropdown_currency">

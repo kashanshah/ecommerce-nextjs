@@ -13,7 +13,7 @@ import {useRouter} from "next/router";
 import {ErrorPage} from "../error-page";
 
 export const ProductScreen = () => {
-  const {query: {slug}} = useRouter();
+  const {query: {slug, page}} = useRouter();
   const [activeImg, setActiveImg] = useState('');
 
   const [product, setProduct] = useState<IProduct>();
@@ -31,7 +31,7 @@ export const ProductScreen = () => {
   }
 
   return <PageWrapper>
-    <Header title={product.name + ' - ' + trans(constants?.seo?.title)}/>
+    <Header title={product.title + ' - ' + trans(constants?.seo?.title)}/>
     <div className="shop_section shop_reverse pt-sm-5">
       <div className="container">
         <div className="row">
@@ -47,7 +47,7 @@ export const ProductScreen = () => {
               },
               {
                 path: '/product/' + slug,
-                breadcrumbName: product?.name,
+                breadcrumbName: product?.title,
               },
             ]}/>
 
@@ -75,7 +75,7 @@ export const ProductScreen = () => {
                   <div className="col-lg-6 col-md-6">
                     <div className="product_d_right">
                       <form action="#">
-                        <h1>{product?.name}</h1>
+                        <h1>{product?.title}</h1>
                         <div className="product_ratting_review d-flex align-items-center">
                           <RatingStars rating={product?.ratings.rating}/>
                           <div className="product_review">

@@ -1,5 +1,5 @@
 import type {NextPage} from 'next'
-import {ProductScreen} from "../../src/screens/product";
+import {ProductScreen} from "../../../src/screens/product";
 
 const Product: NextPage = () => {
 

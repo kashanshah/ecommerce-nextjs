@@ -1,6 +1,9 @@
 import {RatingStars} from "../rating-stars";
 import React from "react";
 import Link from "next/link";
+import {slugify} from "../../../utils/string";
+import {Image} from "antd";
+import {LoadingOutlined} from "@ant-design/icons";
 
 export const ProductPrice =(props: {prices: {price: string | number; salePrice?: string | number}}) => {
   const {prices} = props;
@@ -19,10 +22,27 @@ export const ProductPrice =(props: {prices: {price: string | number; salePrice?:
 export const ProductCard = (props: { product }) => {
   const {product} = props;
 
+  if(!product) {
+    return null;
+  }
+
   return <div className="single_product">
     <div className="product_thumb">
-      <Link href={`/product/${product.slug}`}>
-        <img className="primary_img" src={product.image} alt={product.name} />
+      <Link href={`/product/${slugify(product.title)}`}>
+        <Image
+          width='100%'
+          height={300}
+          src={product.image}
+          preview={false}
+          placeholder={
+            <div style={{minHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <LoadingOutlined
+              style={{ fontSize: 24 }} spin />
+            </div>
+          }
+            fallback={'/assets/img/fallback.png'}
+          // loading='https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product1.png'
+        />
       </Link>
       <div className="product_action">
         <ul>
@@ -41,7 +61,7 @@ export const ProductCard = (props: { product }) => {
     </div>
     <div className="product_content grid_content text-center">
       <RatingStars rating={product.ratings?.rating} noOfRatings={product.ratings?.noOfRatings}/>
-      <h4 className="product_name"><a href={`/product/${product.slug}`}>{product.name}</a></h4>
+      <h4 className="product_name"><a href={`/product/${slugify(product.title)}`}>{product.title}</a></h4>
       <div className="price_box">
         <ProductPrice prices={product.prices} />
       </div>
@@ -50,7 +70,7 @@ export const ProductCard = (props: { product }) => {
       </div>
     </div>
     <div className="product_list_content">
-      <h4 className="product_name"><Link href={`/product/${product.slug}`}>{product.name}</Link></h4>
+      <h4 className="product_name"><Link href={`/product/${slugify(product.title)}`}>{product.title}</Link></h4>
       <p><a href="#">shows</a></p>
       <ProductPrice prices={product.prices} />
       <div className="product_desc">

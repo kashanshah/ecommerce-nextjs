@@ -1,6 +1,6 @@
 export type IProduct = {
   id: string,
-  name: string,
+  title: string,
   image: string,
   images?: string[],
   slug: string;
@@ -19,7 +19,7 @@ export type IProduct = {
 export const products: IProduct[] = [
   {
     id: '1',
-    name: 'Product One',
+    title: 'Product One',
     image: '/assets/img/product/product1.jpg',
     images: [
       'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product1.png',
@@ -42,7 +42,7 @@ export const products: IProduct[] = [
   },
   {
     id: '2',
-    name: 'Product Two',
+    title: 'Product Two',
     slug: 'product-two',
     image: '/assets/img/product/product2.jpg',
     images: [
@@ -65,7 +65,7 @@ export const products: IProduct[] = [
   },
   {
     id: '3',
-    name: 'Product Three',
+    title: 'Product Three',
     slug: 'product-three',
     image: '/assets/img/product/product3.jpg',
     prices: {
@@ -82,7 +82,7 @@ export const products: IProduct[] = [
   },
   {
     id: '4',
-    name: 'Product Four',
+    title: 'Product Four',
     slug: 'product-four',
     image: '/assets/img/product/product4.jpg',
     prices: {
@@ -99,7 +99,7 @@ export const products: IProduct[] = [
   },
   {
     id: '1',
-    name: 'Product One',
+    title: 'Product One',
     slug: 'product-one',
     image: '/assets/img/product/product1.jpg',
     prices: {
@@ -116,7 +116,7 @@ export const products: IProduct[] = [
   },
   {
     id: '2',
-    name: 'Product Two',
+    title: 'Product Two',
     slug: 'product-two',
     image: '/assets/img/product/product2.jpg',
     prices: {
@@ -133,7 +133,7 @@ export const products: IProduct[] = [
   },
   {
     id: '3',
-    name: 'Product Three',
+    title: 'Product Three',
     slug: 'product-three',
     image: '/assets/img/product/product3.jpg',
     prices: {
@@ -150,7 +150,7 @@ export const products: IProduct[] = [
   },
   {
     id: '4',
-    name: 'Product Four',
+    title: 'Product Four',
     slug: 'product-four',
     image: '/assets/img/product/product4.jpg',
     prices: {

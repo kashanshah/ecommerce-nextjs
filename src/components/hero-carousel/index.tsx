@@ -10,7 +10,7 @@ export const HeroCarousel = () => {
       title: 'WEB AGENCY',
       text: 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here',
       cta: {
-        link: '/service/web-development',
+        link: '/products/web-development',
         text: 'Learn More'
       },
       image: '/images/banner_img.jpg'
@@ -19,7 +19,7 @@ export const HeroCarousel = () => {
       title: 'WEB AGENCY',
       text: 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here',
       cta: {
-        link: '/service/web-development',
+        link: '/products/web-development',
         text: 'Learn More'
       },
       image: '/images/banner_img.jpg'

@@ -9,6 +9,7 @@ import Link from "next/link";
 import {PageSearchBox} from "../../components/page-search-box";
 import {useDispatch} from "react-redux";
 import {updateIsSearchOpen} from "../../redux/common-slice";
+import {SocialLinks} from "../../components/social-links";
 
 type HeaderProps = {
   [key: string]: any;
@@ -65,15 +66,9 @@ export const Header = (props: HeaderProps) => {
                     <li className="text-white"><i className="icon-envelope-letter icons"/> <a href={`mailto:${constants?.email}`}>{constants?.email}</a></li>
                   </ul>
                 </div>
-                <div className="header_social d-flex">
+                <div className='d-flex header_social'>
                   <span>Follow us</span>
-                  <ul className="d-flex">
-                    <li><a href="#"><i className="icon-social-twitter icons"/></a></li>
-                    <li><a href="#"><i className="icon-social-facebook icons"/></a></li>
-                    <li><a href="#"><i className="icon-social-instagram icons"/></a></li>
-                    <li><a href="#"><i className="icon-social-youtube icons"/></a></li>
-                    <li><a href="#"><i className="icon-social-pinterest icons"/></a></li>
-                  </ul>
+                  <SocialLinks />
                 </div>
                 <div className="language_currency">
                   <ul className="d-flex">
@@ -175,15 +170,9 @@ export const Header = (props: HeaderProps) => {
                     <p className="text-white">Free shipping worldwide for orders over $99 <a href="#">Learn More</a></p>
                   </div>
                   <div className="header_top_sidebar d-flex align-items-center">
-                    <div className="header_social d-flex">
+                    <div className='d-flex header_social'>
                       <span>Follow us</span>
-                      <ul className="d-flex">
-                        <li><a href="#"><i className="icon-social-twitter icons"/></a></li>
-                        <li><a href="#"><i className="icon-social-facebook icons"/></a></li>
-                        <li><a href="#"><i className="icon-social-instagram icons"/></a></li>
-                        <li><a href="#"><i className="icon-social-youtube icons"/></a></li>
-                        <li><a href="#"><i className="icon-social-pinterest icons"/></a></li>
-                      </ul>
+                      <SocialLinks />
                     </div>
                     <div className="language_currency">
                       <ul className="d-flex">
@@ -272,14 +261,15 @@ export const Header = (props: HeaderProps) => {
                             <li><a href="blog-details.html">Blog Details</a></li>
                           </ul>
                         </li>
-                        <li><ActiveLink href="/contact" className='link'><>Contact</></ActiveLink></li>
+                        <li><ActiveLink href="/contact" className='link'><>Contact</>
+                        </ActiveLink></li>
                       </ul>
                     </nav>
                   </div>
                   <div className="with-canvas">
                     <div className="header_account">
                       <ul className="d-flex">
-                        <li className="header_search"><a href="#" onClick={()=>dispatch(updateIsSearchOpen(true))}><i className="icon-magnifier icons"/></a></li>
+                        <li className="header_search"><a href="#" onClick={() => dispatch(updateIsSearchOpen(true))}><i className="icon-magnifier icons"/></a></li>
                         <li className="account_link"><a href="#"><i className="icon-user icons"/></a>
                           <ul className="dropdown_account_link">
                             <li><a href="my-account.html">My Account</a></li>
@@ -301,7 +291,7 @@ export const Header = (props: HeaderProps) => {
             </div>
           </div>
         </div>
-        <PageSearchBox />
+        <PageSearchBox/>
       </header>
 
     </>

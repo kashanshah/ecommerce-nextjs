@@ -2,6 +2,7 @@ import React from 'react';
 import {constants} from "../../utils/constants";
 import {trans} from "../../utils/trans";
 import Link from "next/link";
+import {SocialLinks} from "../../components/social-links";
 
 type FooterProps = {
   [key: string]: any;
@@ -44,18 +45,7 @@ export const Footer = (props: FooterProps) => {
                 </ul>
               </div>
               <div className="footer_social">
-                <ul className="d-flex justify-content-end">
-                  <li><a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-delay="50"
-                         data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-twitter"/></a></li>
-                  <li><a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-delay="50"
-                         data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-facebook"/></a></li>
-                  <li><a href="#" data-tippy="googleplus" data-tippy-inertia="true" data-tippy-delay="50"
-                         data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-googleplus-outline"/></a></li>
-                  <li><a href="#" data-tippy="Instagram" data-tippy-inertia="true" data-tippy-delay="50"
-                         data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-instagram-outline"/></a></li>
-                  <li><a href="#" data-tippy="Youtube" data-tippy-inertia="true" data-tippy-delay="50"
-                         data-tippy-arrow="true" data-tippy-placement="top"><i className="ion-social-youtube"/></a></li>
-                </ul>
+                <SocialLinks className='justify-content-end' />
               </div>
               <div className="copyright_right">
                 <p>{trans(constants?.copyright)}</p>

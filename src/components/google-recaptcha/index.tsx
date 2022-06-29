@@ -1,6 +1,6 @@
+import React, { RefObject } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { constants } from '../../utils/constants';
-import { RefObject } from 'react';
 
 type GoogleRecaptchaProps = {
   siteKey: string;

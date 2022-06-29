@@ -1,8 +1,9 @@
-import type {NextPage} from 'next'
-import {ErrorPage} from "../src/screens/error-page";
+import React from 'react';
+import type { NextPage } from 'next';
+import { ErrorPage } from '../src/screens/error-page';
 
 const Error: NextPage = () => {
-  return <ErrorPage/>
-}
+  return <ErrorPage />;
+};
 
-export default Error
+export default Error;

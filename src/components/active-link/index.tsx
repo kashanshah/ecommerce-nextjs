@@ -1,6 +1,6 @@
-import React, {ReactElement} from "react";
-import {useGoToUrl} from "../../utils/url";
-import {useRouter} from "next/router";
+import React from 'react';
+import { useGoToUrl } from '../../utils/url';
+import { useRouter } from 'next/router';
 
 type ActiveLinkProps = {
   href: string;
@@ -8,13 +8,20 @@ type ActiveLinkProps = {
   activeClassName?: string;
   children?: React.ReactElement;
   style?: React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>['style'];
-}
+};
 
 export const ActiveLink = (props: ActiveLinkProps) => {
-  const {href, className, activeClassName = 'active', style, ...rest} = props;
+  const { href, className, activeClassName = 'active', style, ...rest } = props;
   const goToUrl = useGoToUrl();
-  const {pathname} = useRouter();
+  const { pathname } = useRouter();
   const isActive = pathname === href;
 
-  return <span onClick={() => goToUrl(href)} className={`${className} ${isActive && activeClassName}`} style={{cursor: 'pointer', ...style}} {...rest} />
-}
+  return (
+    <span
+      onClick={() => goToUrl(href)}
+      className={`${className} ${isActive && activeClassName}`}
+      style={{ cursor: 'pointer', ...style }}
+      {...rest}
+    />
+  );
+};

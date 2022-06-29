@@ -1,9 +1,9 @@
-import type {NextPage} from 'next'
-import {ProductScreen} from "../../../src/screens/product";
+import React from 'react';
+import type { NextPage } from 'next';
+import { ProductScreen } from '../../../src/screens/product';
 
 const Product: NextPage = () => {
+  return <ProductScreen />;
+};
 
-  return <ProductScreen/>
-}
-
-export default Product
+export default Product;

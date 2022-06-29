@@ -1,4 +1,3 @@
-
 export function containsAny(str: string, items: any[]): boolean {
   for (let i in items) {
     const item = items[i];

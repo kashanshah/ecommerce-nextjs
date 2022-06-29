@@ -1,3 +1,4 @@
+import React from 'react';
 import Script from 'next/script';
 import { constants } from '../../utils/constants';
 import { useRouter } from 'next/router';

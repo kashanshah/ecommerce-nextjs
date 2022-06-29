@@ -1,5 +1,5 @@
-import react from "react";
+import React from 'react';
 
 export const Skeleton = (props: any) => {
-  return <div className="skeleton-placeholder" {...props} />
-}
+  return <div className='skeleton-placeholder' {...props} />;
+};

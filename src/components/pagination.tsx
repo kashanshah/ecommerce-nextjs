@@ -1,20 +1,20 @@
-import {SkeletonPagination} from "./skeleton/skeleton-pagination";
-import ReactPaginate, {ReactPaginateProps} from "react-paginate";
-import React from "react";
-import {useGoToUrl} from "../utils/url";
+import React from 'react';
+import { SkeletonPagination } from './skeleton/skeleton-pagination';
+import ReactPaginate, { ReactPaginateProps } from 'react-paginate';
 
 export const Pagination = (props: ReactPaginateProps & { isLoading?: boolean }) => {
-  const {isLoading, ...rest} = props
-
-  const goToUrl = useGoToUrl();
+  const { isLoading, ...rest } = props;
 
   if (isLoading) {
-    return <SkeletonPagination/>
+    return <SkeletonPagination />;
   }
-  return <ReactPaginate
-    pageLinkClassName=''
-    activeLinkClassName='current'
-    renderOnZeroPageCount={null}
-    className='d-flex' {...rest}
-  />
-}
+  return (
+    <ReactPaginate
+      pageLinkClassName=''
+      activeLinkClassName='current'
+      renderOnZeroPageCount={null}
+      className='d-flex'
+      {...rest}
+    />
+  );
+};

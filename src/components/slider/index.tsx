@@ -1,5 +1,5 @@
-import React, {ReactNode} from "react";
-import Flickity, {FlickityOptions} from "react-flickity-component";
+import React, { ReactNode } from 'react';
+import Flickity, { FlickityOptions } from 'react-flickity-component';
 
 type SliderProps = {
   className?: string;
@@ -10,9 +10,8 @@ type SliderProps = {
   reloadOnUpdate?: boolean;
   static?: boolean;
   children: ReactNode;
-}
+};
 
 export const Slider = (props: SliderProps) => {
-  return <Flickity {...props} />
-}
-
+  return <Flickity {...props} />;
+};

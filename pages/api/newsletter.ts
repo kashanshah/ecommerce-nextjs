@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<AxiosResponse>) {
   const data = req.body;
-  if(process.env.NODE_ENV === 'development'){
+  if (process.env.NODE_ENV === 'development') {
     data.isTestingStatus = 'true';
   }
 

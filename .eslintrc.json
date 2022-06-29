@@ -1,3 +1,78 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es6": true,
+    "commonjs": true,
+    "node": true,
+    "mocha": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": ">=17.0.2"
+    }
+  },
+  "extends": ["eslint:recommended", "next", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "globalReturn": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false,
+      "experimentalObjectRestSpread": true,
+      "legacyDecorators": true
+    }
+  },
+  "plugins": ["@typescript-eslint/eslint-plugin", "unused-imports"],
+  "globals": {
+    "process": true
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "no-mixed-operators": "off",
+    "quote-props": ["error", "as-needed"],
+    "no-undef": 0,
+    "no-extra-semi": 1,
+    "no-trailing-spaces": [
+      1,
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "no-unreachable": 1,
+    "prefer-arrow-callback": "error",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "strict": "off",
+    "padded-blocks": "off",
+    "comma-dangle": "off",
+    "no-param-reassign": "off",
+    "arrow-body-style": 0,
+    "no-underscore-dangle": "off",
+    "no-else-return": "off",
+    "require-atomic-updates": 0,
+    "dot-notation": "off",
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"],
+    "no-console": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/prop-types": 0,
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+		]
+  }
 }

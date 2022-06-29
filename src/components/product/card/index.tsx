@@ -7,7 +7,7 @@ export const ProductCard = (props: { product }) => {
     <figure>
       <div className="product_thumb">
         <a href="product-gallery-left.html">
-          <img className="primary_img" src={product.image} alt="consectetur"/>
+          <img className="primary_img" src={product.image} alt={product.name}/>
         </a>
         <div className="product_action">
           <ul>

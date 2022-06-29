@@ -11,7 +11,7 @@ export const constants: ConstantsType = {
       ur: 'حرف',
     },
     description: {
-      en: "A brand for women who love to express their individuality through the clothes they wear ♥️ Delivery all over Pakistan 🇵🇰",
+      en: 'A brand for women who love to express their individuality through the clothes they wear ♥️ Delivery all over Pakistan 🇵🇰',
     },
     keywords: {
       en: 'Fashion, Clothing, Pakistan',
@@ -36,12 +36,12 @@ export const constants: ConstantsType = {
       icon: 'instagram',
     },
     whatsapp: {
-        link: 'https://wa.me/923448227963',
-        colorScheme: 'whatsapp',
-        icon: 'whatsapp',
-      },
+      link: 'https://wa.me/923448227963',
+      colorScheme: 'whatsapp',
+      icon: 'whatsapp',
+    },
   },
-  copyright: { en: `© ${(new Date()).getFullYear()} All Rights Reserved` },
+  copyright: { en: `© ${new Date().getFullYear()} All Rights Reserved` },
   recaptcha: {
     siteKey: '6Lc5y6UUAAAAACUR5d2VH1AmN-hSXKxcO7Iemq9h',
   },

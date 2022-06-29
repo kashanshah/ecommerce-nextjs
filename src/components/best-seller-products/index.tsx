@@ -558,7 +558,7 @@ export const BestSellerProducts = () => {
     }
   ]
 
-  return <section className="product_section pt-95">
+  return <section className="product_section">
     <div className="container">
       <div className="product_header d-flex justify-content-between mb-45">
         <div className="section_title">

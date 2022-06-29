@@ -63,7 +63,7 @@ export const Header = (props: HeaderProps) => {
                     </ul>
                   </div>
                   <div className="free_shipping_text">
-                    <p className="text-white">Free shipping worldwide for orders over $99 <a href="#">Learn More</a></p>
+                    <p className="text-white">Delivery all over Pakistan 🇵🇰</p>
                   </div>
                   <div className="header_top_sidebar d-flex align-items-center">
                     <div className='d-flex header_social'>
@@ -74,13 +74,6 @@ export const Header = (props: HeaderProps) => {
                       <ul className="d-flex">
                         <li className="language"><a href="#">{locale} <i className="icon-right ion-ios-arrow-down"/></a>
                           <LanguageSwitcher />
-                        </li>
-                        <li className="currency"><a href="#"> USd <i className="icon-right ion-ios-arrow-down"/></a>
-                          <ul className="dropdown_currency">
-                            <li><a href="#">€ Euro</a></li>
-                            <li><a href="#">£ Pound Sterling</a></li>
-                            <li><a href="#">$ US Dollar</a></li>
-                          </ul>
                         </li>
                       </ul>
                     </div>

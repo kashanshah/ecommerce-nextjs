@@ -3,8 +3,8 @@ import { Breadcrumb } from '../../components/breadcrumb';
 import { MainBanner } from '../../components/main-banner/main-banner';
 import { ShopFilters } from '../../components/shop/shop-filters';
 import { ProductListing } from '../../components/shop/product-listing';
-import { useMutation } from 'react-query';
-import axios, { AxiosError } from 'axios';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useGoToUrl } from '../../utils/url';
 import { Pagination } from '../../components/pagination';
@@ -18,23 +18,26 @@ export const ShopScreen = () => {
 
   const [isGrid, setIsGrid] = useState(true);
 
-  const limit = 21;
+  const limit = 20;
   const offset = limit * (Number(page as string) - 1);
 
-  const { isLoading, mutate, data } = useMutation<
-    { data: any[]; total: number; offset: number; limit: number },
-    AxiosError,
-    { limit?: number; offset?: number }
-  >({
-    mutationKey: 'shop-products',
-    mutationFn: async (data) => {
-      const response = await axios.post('/api/products/list', data);
+  const { isLoading, data, isFetching, refetch } = useQuery(
+    ['shop-products', Number(page as string)],
+    async () => {
+      const response = await axios.post('/api/products/list', { limit, offset });
       return response?.data;
     },
-  });
+    {
+      keepPreviousData: true,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      refetchInterval: false,
+    }
+  );
 
   useEffect(() => {
-    mutate({ limit: limit, offset: offset });
+    refetch({ queryKey: ['shop-products', Number(page as string)] });
   }, [query]);
 
   return (
@@ -61,7 +64,7 @@ export const ShopScreen = () => {
 
             <div className={`row shop_wrapper ${isGrid ? 'grid_3' : 'grid_list'}`}>
               <div className='row'>
-                <ProductListing isLoading={isLoading} products={data?.data} pageLimit={limit} />
+                <ProductListing isLoading={isLoading || isFetching} products={data?.data} pageLimit={limit} />
               </div>
             </div>
 

@@ -20,7 +20,7 @@ export const ProductListing = (props: ProductListingProps) => {
           return (
             <div
               key={index}
-              className={isGrid ? 'col-lg-4 col-md-4 col-sm-6' : 'col-12 d-flex'}
+              className={isGrid ? 'col-lg-3 col-md-3 col-sm-6' : 'col-12 d-flex'}
               style={{ textAlign: 'center' }}
             >
               <SkeletonProductCard key={index} />

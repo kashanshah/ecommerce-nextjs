@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ProductCard } from '../product/card';
 import { products } from '../../utils/data';
+import { BestSellerTabPanel } from './best-seller-tab-panel';
 
 export const BestSellerProducts = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -69,22 +69,7 @@ export const BestSellerProducts = () => {
         <div className='product_container'>
           <div className='tab-content'>
             {allTabs.map((tab, i) => (
-              <div
-                key={`tab-pane-${i}`}
-                className={`tab-pane ${activeTab === tab.id && ' show active'}`}
-                id={tab.id}
-                role='tabpanel'
-              >
-                <div className='row'>
-                  {tab.products?.map((product, index) => {
-                    return (
-                      <div key={`${tab.id}-product-${index}`} className='col-md-3'>
-                        <ProductCard product={product} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={tab.id} isActive={activeTab === tab.id} />
             ))}
           </div>
         </div>

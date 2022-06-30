@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'antd/dist/antd.css';
 import 'styles/style.css';
 import 'styles/globals.css';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <GoogleAnalytics gaId={constants?.ga?.id} />
         </ReduxPersistGate>
       </Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

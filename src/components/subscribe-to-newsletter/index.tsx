@@ -45,7 +45,6 @@ export const SubscribeToNewsletter = (props: SubscribeToNewsletterProps) => {
   >({
     mutationKey: 'submit',
     mutationFn: (data) => {
-      console.log('finding', data);
       return axios.post('/api/newsletter', data);
     },
     onSuccess: async (response) => {

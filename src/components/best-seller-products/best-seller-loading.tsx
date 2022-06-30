@@ -3,33 +3,39 @@ import Link from 'next/link';
 import { Skeleton } from '../skeleton';
 import { ProductListing } from '../shop/product-listing';
 
-export const BestSellerLoading = () => {
+type BestSellerLoadingProps = {
+  title?: string;
+};
+
+export const BestSellerLoading = (props: BestSellerLoadingProps) => {
+  const { title = 'best selling items' } = props;
+
   return (
     <section className='product_section'>
       <div className='container'>
-        <div className='product_header d-flex justify-content-between mb-45'>
+        <div className='product_header d-flex justify-content-between align-items-center mb-45'>
           <div className='section_title'>
-            <h2>best selling items</h2>
+            <h2>{title}</h2>
           </div>
 
-          <div className='product_tab_btn d-flex'>
+          <div className='product_tab_btn d-flex align-items-center'>
             <ul className='nav' id='myTab' role='tablist'>
               <li style={{ margin: '0 15px 0 0' }}>
-                <Skeleton style={{ width: 50 }} />
+                <Skeleton style={{ margin: 0, width: 50 }} />
               </li>
               <li style={{ margin: '0 15px 0 0' }}>
-                <Skeleton style={{ width: 50 }} />
+                <Skeleton style={{ margin: 0, width: 50 }} />
               </li>
               <li style={{ margin: '0 15px 0 0' }}>
-                <Skeleton style={{ width: 50 }} />
+                <Skeleton style={{ margin: 0, width: 50 }} />
               </li>
               <li style={{ margin: '0 15px 0 0' }}>
-                <Skeleton style={{ width: 50 }} />
+                <Skeleton style={{ margin: 0, width: 50 }} />
               </li>
             </ul>
             <div className='all_product' style={{ margin: 0 }}>
               <Link href='/shop'>
-                <Skeleton style={{ width: 120 }} />
+                <Skeleton style={{ margin: 0, width: 120 }} />
               </Link>
             </div>
           </div>

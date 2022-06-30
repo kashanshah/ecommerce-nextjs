@@ -21,7 +21,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       return error.response;
     });
 
-  // console.log('find response', response)
-
   res.status(response.status).json(response?.data);
 }

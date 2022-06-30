@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { products } from '../../utils/data';
 import { BestSellerTabPanel } from './best-seller-tab-panel';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { BestSellerLoading } from './best-seller-loading';
+import { BestSellerHeader } from './best-seller-header';
 
 export const BestSellerProducts = () => {
   const [activeTab, setActiveTab] = useState('all');
 
-  const allTabs = [
-    {
-      id: 'all',
-      title: 'All',
-      products: products,
+  const { isLoading, data } = useQuery(
+    'parent-categories',
+    async () => {
+      const response = await axios.post('/api/categories/list', { limit: 5, parentId: 0 });
+      return response?.data;
     },
     {
-      id: 'clothings',
-      title: 'Clothings',
-      products: products,
-    },
-    {
-      id: 'bags',
-      title: 'Bags',
-      products: products,
-    },
-    {
-      id: 'shoes',
-      title: 'Shoes',
-      products: products,
-    },
-    {
-      id: 'accessories',
-      title: 'Accessories',
-      products: products,
-    },
-  ];
+      keepPreviousData: true,
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      refetchInterval: false,
+      onSuccess: (data) => {
+        setActiveTab(data?.data?.[0]?.id);
+      },
+    }
+  );
+
+  if (isLoading) {
+    return <BestSellerLoading />;
+  }
 
   return (
     <section className='product_section'>
@@ -42,34 +38,17 @@ export const BestSellerProducts = () => {
             <h2>best selling items</h2>
           </div>
 
-          <div className='product_tab_btn d-flex'>
-            <ul className='nav' id='myTab' role='tablist'>
-              {allTabs.map((tab, index) => {
-                return (
-                  <li key={`${tab.id}-${index}`}>
-                    <a
-                      data-bs-toggle='tab'
-                      onClick={() => setActiveTab(tab.id)}
-                      role='tab'
-                      aria-controls={tab.id}
-                      aria-selected='false'
-                      className={activeTab === tab.id && ' active'}
-                    >
-                      {tab.title}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-            <div className='all_product'>
-              <Link href='/shop'>All Product</Link>
-            </div>
-          </div>
+          <BestSellerHeader
+            categories={data?.data}
+            isLoading={isLoading}
+            onChange={(id) => setActiveTab(id)}
+            activeTabId={activeTab}
+          />
         </div>
         <div className='product_container'>
           <div className='tab-content'>
-            {allTabs.map((tab, i) => (
-              <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={tab.id} isActive={activeTab === tab.id} />
+            {data?.data?.map((category, i) => (
+              <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={category.id} isActive={activeTab === category.id} />
             ))}
           </div>
         </div>

@@ -19,7 +19,7 @@ export const ShopScreen = () => {
   const [isGrid, setIsGrid] = useState(true);
 
   const limit = 21;
-  const offset = limit * Number(page as string);
+  const offset = limit * (Number(page as string) - 1);
 
   const { isLoading, mutate, data } = useMutation<
     { data: any[]; total: number; offset: number; limit: number },

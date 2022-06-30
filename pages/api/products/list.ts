@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const response = await axios({
     method: 'GET',
-    url: 'https://portal.sablayjao.pk/api/inventory/list.php?' + params,
+    url: 'https://portal.sablayjao.pk/api/inventory/product-list.php?' + params,
     withCredentials: true,
     headers: {
       'Access-Control-Allow-Origin': '*',

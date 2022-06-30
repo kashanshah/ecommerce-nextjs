@@ -36,6 +36,7 @@ export const ProductCard = (props: { product }) => {
           <Image
             width='100%'
             height={300}
+            style={{ objectFit: 'cover' }}
             src={product.image}
             preview={false}
             placeholder={

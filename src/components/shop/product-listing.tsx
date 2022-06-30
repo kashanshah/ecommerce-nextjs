@@ -39,7 +39,7 @@ export const ProductListing = (props: ProductListingProps) => {
     <>
       {products?.map((product, index) => {
         return (
-          <div key={`shop-product-${index}`} className={isGrid ? 'col-lg-4 col-md-4 col-sm-6' : 'col-12'}>
+          <div key={`shop-product-${index}`} className={isGrid ? 'col-lg-3 col-md-3 col-sm-6' : 'col-12'}>
             <ProductCard product={product} />
           </div>
         );

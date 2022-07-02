@@ -9,7 +9,7 @@ const commonSlice = createSlice({
     isPageLoading: true,
     isSearchOpen: false,
     isMiniCartActive: false,
-    orderBy: ['date', 'desc'],
+    orderBy: ['popularity', 'desc'],
     isGridListing: true,
   },
   reducers: {

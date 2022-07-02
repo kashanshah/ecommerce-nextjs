@@ -71,18 +71,11 @@ export type IProduct = {
   cross_sell_ids: [];
   parent_id: number;
   purchase_note: string;
-  categories: [
-    {
-      id: number;
-      name: string;
-      slug: 'clothing';
-    },
-    {
-      id: number;
-      name: string;
-      slug: 't-shirts';
-    }
-  ];
+  categories: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
   tags: {
     id: number;
     name: string;

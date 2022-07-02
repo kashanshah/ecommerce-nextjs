@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageWrapper } from '../../layouts/page-wrapper';
 import { Header } from '../../layouts/header/header';
 import { trans } from '../../utils/trans';
@@ -16,12 +16,20 @@ import { AddToCartBtn } from '../../components/product/card/add-to-cart-btn';
 import { ProductTags } from './product-tags';
 import { getProductStockLabel } from '../../utils/wc';
 import { LoadingOutlined } from '@ant-design/icons';
+import { Link } from '../../components/link';
+import { ShareLinks } from '../../components/share-links';
 
 export const ProductScreen = (props: { product: IProduct }) => {
   const {
     query: { slug },
   } = useRouter();
   const [activeImg, setActiveImg] = useState<IProduct['images'][0]>();
+
+  const [pageURL, setPageURL] = useState('');
+
+  useEffect(() => {
+    setPageURL(window?.location.href);
+  }, []);
 
   const { product } = props;
 
@@ -188,42 +196,32 @@ export const ProductScreen = (props: { product: IProduct }) => {
                             </p>
                           </div>
                           <div className='product_tags d-flex'>
-                            {product.tags?.length > 0 && (
-                              <>
-                                <span>tags: </span>
-                                <ProductTags tags={product.tags} />
-                              </>
-                            )}
+                            <span>Category: </span>
+                            <ul className='d-flex'>
+                              {product.categories.map((cat, index) => {
+                                return (
+                                  <li key={cat.slug}>
+                                    <Link
+                                      className={index !== product.categories.length - 1 ? 'comma-after' : ''}
+                                      href={`/product-category/${cat.slug}-${cat.id}`}
+                                      style={{ fontWeight: 400, color: '#999999' }}
+                                    >
+                                      <>{cat.name}</>
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
                           </div>
+                          {product.tags?.length > 0 && (
+                            <div className='product_tags d-flex'>
+                              <span>tags: </span>
+                              <ProductTags tags={product.tags} />
+                            </div>
+                          )}
                           <div className='priduct_social d-flex'>
                             <span>SHARE: </span>
-                            <ul>
-                              <li>
-                                <a href='#'>
-                                  <i className='ion-social-twitter'></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='#'>
-                                  <i className='ion-social-facebook'></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='#'>
-                                  <i className='ion-social-googleplus-outline'></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='#'>
-                                  <i className='ion-social-pinterest'></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href='#'>
-                                  <i className='ion-social-instagram-outline'></i>
-                                </a>
-                              </li>
-                            </ul>
+                            <ShareLinks url={pageURL} text={product.name} />
                           </div>
                         </form>
                       </div>

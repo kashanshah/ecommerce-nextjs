@@ -17,7 +17,12 @@ export const BestSellerProducts = (props: BestSellerProductsProps) => {
   const { isLoading, isError, error, data } = useQuery<any, AxiosError>(
     'parent-categories',
     async () => {
-      const response = await axios.post('/api/categories/list', { limit: 5, parentId: 0 });
+      const response = await axios.post('/api/categories/list', {
+        per_page: 8,
+        parent: 0,
+        sortby: 'count',
+        hide_empty: true,
+      });
       return response?.data;
     },
     {

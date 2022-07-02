@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import { Select } from 'antd';
+import { Skeleton } from '../skeleton';
 
 type ShopFiltersProps = {
   totalProducts?: number;
+  isLoading?: boolean;
 };
 
 export const ShopFilters = (props: ShopFiltersProps) => {
-  const { totalProducts } = props;
+  const { totalProducts, isLoading } = props;
 
   const [isGrid, setIsGrid] = useState(true);
 
   return (
     <div className='shop_toolbar_wrapper d-flex justify-content-between align-items-center'>
       <div className='page_amount'>
-        <p>
-          <span>{totalProducts}</span> Products Found
-        </p>
+        {isLoading ? (
+          <div>
+            <Skeleton style={{ margin: 0, width: 170 }} />
+          </div>
+        ) : (
+          <p>
+            <span>{totalProducts}</span> Products Found
+          </p>
+        )}
       </div>
       <div className=' sorting_by d-flex align-items-center'>
         <span style={{ marginInlineEnd: 15 }}>SORT BY :</span>

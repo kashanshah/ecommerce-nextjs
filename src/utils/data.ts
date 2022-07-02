@@ -1,176 +1,152 @@
-export type IProduct = {
-  id: string;
-  title: string;
-  image: string;
-  images?: string[];
+export type IProductCategory = {
+  id: number;
+  name: string;
   slug: string;
-  prices: {
-    salePrice: string | number;
-    price: string | number;
-  };
-  ratings: {
-    rating: number;
-    noOfRatings: number;
-  };
-  description?: string;
-  isInStock?: boolean;
-  sku?: string;
+  parent: number;
+  description: string;
+  display: string;
+  image: [];
+  menu_order: number;
+  count: number;
 };
-export const products: IProduct[] = [
-  {
-    id: '1',
-    title: 'Product One',
-    image: '/assets/img/product/product1.jpg',
-    images: [
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product1.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product2.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product3.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product4.png',
-    ],
-    slug: 'product-one',
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
+
+export type IProduct = {
+  id: 799;
+  name: string;
+  slug: string;
+  permalink: string;
+  date_created: string;
+  date_created_gmt: string;
+  date_modified: string;
+  date_modified_gmt: string;
+  type: string;
+  status: string;
+  featured: boolean;
+  catalog_visibility: string;
+  description: string;
+  short_description: string;
+  sku: string;
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  date_on_sale_fromstring; // date-time
+  date_on_sale_from_gmtstring; // date-time
+  date_on_sale_tostring; // date-time
+  date_on_sale_to_gmtstring; // date-time
+  price_html: string;
+  on_sale: boolean;
+  purchasable: boolean;
+  total_sales: number;
+  virtual: boolean;
+  downloadable: boolean;
+  downloads: [];
+  download_limit: number;
+  download_expiry: number;
+  external_url: string;
+  button_text: string;
+  tax_status: string;
+  tax_class: string;
+  manage_stock: boolean;
+  stock_quantity: number;
+  stock_status: 'instock' | 'outofstock' | 'onbackorder';
+  backorders: string;
+  backorders_allowed: boolean;
+  backordered: boolean;
+  sold_individually: boolean;
+  weight: string;
+  dimensions: {
+    length: string;
+    width: string;
+    height: '';
+  };
+  shipping_required: boolean;
+  shipping_taxable: boolean;
+  shipping_class: string;
+  shipping_class_id: number;
+  reviews_allowed: boolean;
+  average_rating: string;
+  rating_count: number;
+  related_ids: [31, 22, 369, 414, 56];
+  upsell_ids: [];
+  cross_sell_ids: [];
+  parent_id: number;
+  purchase_note: string;
+  categories: [
+    {
+      id: number;
+      name: string;
+      slug: 'clothing';
     },
-    ratings: {
-      rating: 4.8,
-      noOfRatings: 3,
+    {
+      id: number;
+      name: string;
+      slug: 't-shirts';
+    }
+  ];
+  tags: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  images: [
+    {
+      id: number;
+      date_created: string;
+      date_created_gmt: string;
+      date_modified: string;
+      date_modified_gmt: string;
+      src: string;
+      name: string;
+      alt: '';
     },
-    description:
-      'asdA t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '2',
-    title: 'Product Two',
-    slug: 'product-two',
-    image: '/assets/img/product/product2.jpg',
-    images: [
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product1.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product2.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product3.png',
-      'https://tm.hasthemes.com/edon-preview/edon/assets/img/product/big-product/product4.png',
-    ],
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
+    {
+      id: number;
+      date_created: string;
+      date_created_gmt: string;
+      date_modified: string;
+      date_modified_gmt: string;
+      src: string;
+      name: string;
+      alt: '';
     },
-    ratings: {
-      rating: 4.3,
-      noOfRatings: 35,
+    {
+      id: number;
+      date_created: string;
+      date_created_gmt: string;
+      date_modified: string;
+      date_modified_gmt: string;
+      src: string;
+      name: string;
+      alt: '';
     },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '3',
-    title: 'Product Three',
-    slug: 'product-three',
-    image: '/assets/img/product/product3.jpg',
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
-    },
-    ratings: {
-      rating: 5,
-      noOfRatings: 2,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '4',
-    title: 'Product Four',
-    slug: 'product-four',
-    image: '/assets/img/product/product4.jpg',
-    prices: {
-      salePrice: '$30.00',
-      price: '$25.00',
-    },
-    ratings: {
-      rating: 3.7,
-      noOfRatings: 101,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '1',
-    title: 'Product One',
-    slug: 'product-one',
-    image: '/assets/img/product/product1.jpg',
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
-    },
-    ratings: {
-      rating: 4.8,
-      noOfRatings: 3,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '2',
-    title: 'Product Two',
-    slug: 'product-two',
-    image: '/assets/img/product/product2.jpg',
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
-    },
-    ratings: {
-      rating: 4.3,
-      noOfRatings: 35,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '3',
-    title: 'Product Three',
-    slug: 'product-three',
-    image: '/assets/img/product/product3.jpg',
-    prices: {
-      salePrice: '$20.00',
-      price: '$26.00',
-    },
-    ratings: {
-      rating: 5,
-      noOfRatings: 2,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-  {
-    id: '4',
-    title: 'Product Four',
-    slug: 'product-four',
-    image: '/assets/img/product/product4.jpg',
-    prices: {
-      salePrice: '$30.00',
-      price: '$25.00',
-    },
-    ratings: {
-      rating: 3.7,
-      noOfRatings: 101,
-    },
-    description:
-      'A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.',
-    isInStock: true,
-    sku: 'ABC123456',
-  },
-];
+    {
+      id: number;
+      date_created: string;
+      date_created_gmt: string;
+      date_modified: string;
+      date_modified_gmt: string;
+      src: string;
+      name: string;
+      alt: '';
+    }
+  ];
+  attributes: {
+    id: number;
+    name: string;
+    position: number;
+    visible: boolean;
+    variation: boolean;
+    options: string[];
+  }[];
+  default_attributes: [];
+  variations: [];
+  grouped_products: [];
+  menu_order: number;
+  meta_data: [];
+};
+
+export type ListProducts = {
+  data: IProduct[];
+  total: number;
+  totalPages: number;
+};

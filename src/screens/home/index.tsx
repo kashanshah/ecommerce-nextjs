@@ -1,28 +1,27 @@
-import {PageWrapper} from '../../layouts/page-wrapper';
-import {HeroCarousel} from "../../components/hero-carousel";
-import {Header} from "../../layouts/header/header";
-import {trans} from "../../utils/trans";
-import {constants} from "../../utils/constants";
-import {Footer} from "../../layouts/footer";
-import {SubscribeToNewsletter} from "../../components/subscribe-to-newsletter";
-import {BannersSection} from "../../components/banners-section";
-import React from "react";
-import {BestSellerProducts} from "../../components/best-seller-products";
+import { PageWrapper } from '../../layouts/page-wrapper';
+import { HeroCarousel } from '../../components/hero-carousel';
+import { Header } from '../../layouts/header/header';
+import { trans } from '../../utils/trans';
+import { constants } from '../../utils/constants';
+import { Footer } from '../../layouts/footer';
+import { SubscribeToNewsletter } from '../../components/subscribe-to-newsletter';
+import { BannersSection } from '../../components/banners-section';
+import React from 'react';
+import { BestSellerProducts } from '../../components/best-seller-products/best-seller-products';
 
 export const HomeScreen = () => {
-
   return (
     <PageWrapper>
-      <Header title={trans(constants?.seo?.title)}/>
-      <HeroCarousel/>
+      <Header title={trans(constants?.seo?.title)} />
+      <HeroCarousel />
 
-      <BannersSection/>
-      <BannersSection type='two' title='Featured Collection'/>
+      <BannersSection />
+      <BannersSection type='two' title='Featured Collection' />
 
-      <BestSellerProducts/>
+      <BestSellerProducts />
 
-      <SubscribeToNewsletter/>
-      <Footer/>
+      <SubscribeToNewsletter />
+      <Footer />
     </PageWrapper>
   );
 };

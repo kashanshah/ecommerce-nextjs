@@ -18,13 +18,12 @@ export const ShopScreen = () => {
 
   const [isGrid, setIsGrid] = useState(true);
 
-  const limit = 20;
-  const offset = limit * (Number(page as string) - 1);
+  const limit = 12;
 
   const { isLoading, data, isFetching, refetch } = useQuery(
     ['shop-products', Number(page as string)],
     async () => {
-      const response = await axios.post('/api/products/list', { limit, offset });
+      const response = await axios.post('/api/products/list', { per_page: limit, page: page, status: 'publish' });
       return response?.data;
     },
     {
@@ -70,7 +69,7 @@ export const ShopScreen = () => {
 
             <div className='pagination_style pagination justify-content-center'>
               <Pagination
-                pageCount={data?.total / limit}
+                pageCount={data?.totalPages}
                 forcePage={Number(page as string) - 1}
                 onPageChange={(page) => {
                   goToUrl('/shop/' + (page.selected + 1));

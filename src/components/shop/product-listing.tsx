@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ProductCard } from '../product/card';
+import { ProductCard } from '../product/card/card';
 import { SkeletonProductCard } from '../skeleton/skeleton-product-card';
+import { IProduct } from '../../utils/data';
 
 type ProductListingProps = {
-  products: any[];
+  products: IProduct[];
   pageLimit?: number;
   isLoading?: boolean;
 };

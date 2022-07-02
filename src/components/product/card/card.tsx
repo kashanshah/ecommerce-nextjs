@@ -1,28 +1,18 @@
 import { RatingStars } from '../rating-stars';
 import React from 'react';
-import Link from 'next/link';
-import { slugify } from '../../../utils/string';
 import { Image } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { AddToCartBtn } from './add-to-cart-btn';
+import { IProduct } from '../../../utils/data';
+import { Link } from '../../link';
 
-export const ProductPrice = (props: { prices: { price: string | number; salePrice?: string | number } }) => {
-  const { prices } = props;
+export const ProductPrice = (props: { priceHtml?: string }) => {
+  const { priceHtml } = props;
 
-  return (
-    <>
-      {prices?.salePrice ? (
-        <>
-          <span className='current_price'>{prices?.salePrice}</span>
-          <span className='old_price'>{prices?.price}</span>
-        </>
-      ) : (
-        <span className='current_price'>{prices?.price}</span>
-      )}
-    </>
-  );
+  return <p dangerouslySetInnerHTML={{ __html: priceHtml }} />;
 };
 
-export const ProductCard = (props: { product }) => {
+export const ProductCard = (props: { product: IProduct }) => {
   const { product } = props;
 
   if (!product) {
@@ -32,13 +22,14 @@ export const ProductCard = (props: { product }) => {
   return (
     <div className='single_product'>
       <div className='product_thumb'>
-        <Link href={`/product/${slugify(product.title)}`}>
+        <Link href={`/product/${product.slug}-${product.id}`}>
           <Image
             width='100%'
             height={300}
             style={{ objectFit: 'cover' }}
-            src={product.image}
+            src={product.images?.[0]?.src}
             preview={false}
+            alt={product.images?.[0]?.alt}
             placeholder={
               <div style={{ minHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <LoadingOutlined style={{ fontSize: 24 }} spin />
@@ -91,55 +82,37 @@ export const ProductCard = (props: { product }) => {
             </li>
           </ul>
         </div>
-        <div className='product_label'>
-          <span>-18%</span>
-        </div>
+        {product.on_sale && (
+          <div className='product_label'>
+            <span>SALE</span>
+          </div>
+        )}
       </div>
       <div className='product_content grid_content text-center'>
-        <RatingStars rating={product.ratings?.rating} noOfRatings={product.ratings?.noOfRatings} />
+        <RatingStars rating={Number(product.average_rating)} noOfRatings={product.rating_count} />
         <h4 className='product_name'>
-          <a href={`/product/${slugify(product.title)}`}>{product.title}</a>
+          <a href={`/product/${product.slug}-${product.id}`}>{product.name}</a>
         </h4>
         <div className='price_box'>
-          <ProductPrice prices={product.prices} />
+          <ProductPrice priceHtml={product.price_html} />
         </div>
-        <div className='add_to_cart'>
-          <a
-            className='btn btn-primary'
-            href='#'
-            data-tippy='Add To Cart'
-            data-tippy-inertia='true'
-            data-tippy-delay='50'
-            data-tippy-arrow='true'
-            data-tippy-placement='top'
-          >
-            Add To Cart
-          </a>
-        </div>
+        <AddToCartBtn product={product} className='add_to_cart' />
       </div>
       <div className='product_list_content'>
         <h4 className='product_name'>
-          <Link href={`/product/${slugify(product.title)}`}>{product.title}</Link>
+          <Link href={`/product/${product.slug}-${product.id}`}>
+            <>{product.name}</>
+          </Link>
         </h4>
         <p>
           <a href='#'>shows</a>
         </p>
-        <ProductPrice prices={product.prices} />
+        <ProductPrice priceHtml={product.price_html} />
         <div className='product_desc'>
-          <p>{product.description}</p>
+          <p>{product.short_description}</p>
         </div>
         <div className='add_to_cart'>
-          <a
-            className='btn btn-primary'
-            href='#'
-            data-tippy='Add To Cart'
-            data-tippy-inertia='true'
-            data-tippy-delay='50'
-            data-tippy-arrow='true'
-            data-tippy-placement='top'
-          >
-            Add To Cart
-          </a>
+          <AddToCartBtn product={product} className='add_to_cart' />
         </div>
       </div>
     </div>

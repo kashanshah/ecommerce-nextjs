@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import { ShopScreen } from '../../src/screens/shop';
+import { ShopScreen } from '../../src/screens/shop/shop';
 import { PageWrapper } from '../../src/layouts/page-wrapper';
 import { Header } from '../../src/layouts/header/header';
 import { trans } from '../../src/utils/trans';

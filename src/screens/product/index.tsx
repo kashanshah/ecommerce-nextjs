@@ -7,17 +7,23 @@ import { Breadcrumb } from '../../components/breadcrumb';
 import { SubscribeToNewsletter } from '../../components/subscribe-to-newsletter';
 import { Footer } from '../../layouts/footer';
 import { RatingStars } from '../../components/product/rating-stars';
-import { ProductPrice } from '../../components/product/card';
+import { ProductPrice } from '../../components/product/card/card';
 import { useRouter } from 'next/router';
 import { ErrorPage } from '../error-page';
+import { IProduct } from '../../utils/data';
+import { Image } from 'antd';
+import { AddToCartBtn } from '../../components/product/card/add-to-cart-btn';
+import { ProductTags } from './product-tags';
+import { getProductStockLabel } from '../../utils/wc';
+import { LoadingOutlined } from '@ant-design/icons';
 
-export const ProductScreen = () => {
+export const ProductScreen = (props: { product: IProduct }) => {
   const {
     query: { slug },
   } = useRouter();
-  const [activeImg, setActiveImg] = useState('');
+  const [activeImg, setActiveImg] = useState<IProduct['images'][0]>();
 
-  let product;
+  const { product } = props;
 
   if (!product) {
     return <ErrorPage />;
@@ -25,7 +31,7 @@ export const ProductScreen = () => {
 
   return (
     <PageWrapper>
-      <Header title={product.title + ' - ' + trans(constants?.seo?.title)} />
+      <Header title={product.name + ' - ' + trans(constants?.seo?.title)} />
       <div className='shop_section shop_reverse pt-sm-5'>
         <div className='container'>
           <div className='row'>
@@ -36,13 +42,15 @@ export const ProductScreen = () => {
                     path: '/home',
                     breadcrumbName: 'Home',
                   },
-                  {
-                    path: '/shop',
-                    breadcrumbName: 'Shop',
-                  },
+                  ...(product?.categories?.map((category) => {
+                    return {
+                      path: `/product-category/${category.slug}-${category.id}/`,
+                      breadcrumbName: category.name,
+                    };
+                  }) || []),
                   {
                     path: '/product/' + slug,
-                    breadcrumbName: product?.title,
+                    breadcrumbName: product?.name,
                   },
                 ]}
               />
@@ -57,19 +65,35 @@ export const ProductScreen = () => {
                             {product?.images?.map((img, index) => {
                               return (
                                 <a
-                                  key={img + index}
+                                  key={img.src + index}
                                   onClick={() => setActiveImg(img)}
                                   className='zoom_tabimg_list'
                                   href='javascript:void(0)'
                                 >
-                                  <img src={img} alt='tab-thumb' />
+                                  <img src={img.src} alt={img.alt} />
                                 </a>
                               );
                             })}
                           </div>
                           <div className='product_zoom_main_img'>
                             <div className='product_zoom_thumb'>
-                              <img src={activeImg || product?.images?.[0]} alt='' />
+                              <Image
+                                src={activeImg?.src || product?.images?.[0]?.src}
+                                alt={activeImg?.alt || product?.images?.[0]?.alt}
+                                placeholder={
+                                  <div
+                                    style={{
+                                      minHeight: 300,
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                    }}
+                                  >
+                                    <LoadingOutlined style={{ fontSize: 24 }} spin />
+                                  </div>
+                                }
+                                fallback={'/assets/img/fallback.png'}
+                              />
                             </div>
                           </div>
                         </div>
@@ -78,30 +102,30 @@ export const ProductScreen = () => {
                     <div className='col-lg-6 col-md-6'>
                       <div className='product_d_right'>
                         <form action='#'>
-                          <h1>{product?.title}</h1>
+                          <h1>{product?.name}</h1>
                           <div className='product_ratting_review d-flex align-items-center'>
-                            <RatingStars rating={product?.ratings.rating} />
+                            <RatingStars rating={Number(product?.average_rating)} />
                             <div className='product_review'>
                               <ul className='d-flex'>
-                                <li>{product?.ratings.noOfRatings} reviews</li>
+                                <li>{product?.rating_count} reviews</li>
                               </ul>
                             </div>
                           </div>
                           <div className='price_box'>
-                            <ProductPrice prices={product?.prices} />
+                            <ProductPrice priceHtml={product?.price_html} />
                           </div>
                           <div className='product_availalbe'>
                             <ul className='d-flex'>
                               <li>
-                                <i className='icon-layers icons'></i> Availalbe:{' '}
-                                <span className={product?.isInStock && 'stock'}>
-                                  {product?.isInStock ? 'In Stock' : 'Out of Stock'}
+                                <i className='icon-layers icons'></i> Availability:{' '}
+                                <span className={product?.stock_status === 'instock' && ' stock '}>
+                                  {getProductStockLabel(product?.stock_status)}
                                 </span>
                               </li>
                             </ul>
                           </div>
                           <div className='product_desc'>
-                            <p>{product?.description}</p>
+                            <div dangerouslySetInnerHTML={{ __html: product.short_description }} />
                           </div>
                           <div className='product_variant'>
                             <div className='filter__list widget_color d-flex align-items-center'>
@@ -150,9 +174,9 @@ export const ProductScreen = () => {
                               <div className='pro-qty border'>
                                 <input min='1' max='100' type='number' value='1' />
                               </div>
-                              <button className='button btn btn-primary' type='submit'>
-                                <i className='ion-android-add'></i> Add To Cart
-                              </button>
+                              <div className='position-relative'>
+                                <AddToCartBtn product={product} className='' />
+                              </div>
                               <a className='wishlist' href='wishlist.html'>
                                 <i className='ion-ios-heart'></i>
                               </a>
@@ -164,18 +188,12 @@ export const ProductScreen = () => {
                             </p>
                           </div>
                           <div className='product_tags d-flex'>
-                            <span>tags: </span>
-                            <ul className='d-flex'>
-                              <li>
-                                <a href='#'>fashion,</a>
-                              </li>
-                              <li>
-                                <a href='#'>clothings,</a>
-                              </li>
-                              <li>
-                                <a href='#'>accessorires</a>
-                              </li>
-                            </ul>
+                            {product.tags?.length > 0 && (
+                              <>
+                                <span>tags: </span>
+                                <ProductTags tags={product.tags} />
+                              </>
+                            )}
                           </div>
                           <div className='priduct_social d-flex'>
                             <span>SHARE: </span>
@@ -293,21 +311,7 @@ export const ProductScreen = () => {
                         <div className='tab-content'>
                           <div className='tab-pane fade show active' id='info' role='tabpanel'>
                             <div className='product_info_content'>
-                              <p>
-                                Morbi neque arcu, efficitur non porta eu, laoreet sit amet diam. Mauris quis massa sed
-                                mauris dapibus accumsan id quis nulla. <br /> Quisque id est sit amet neque auctor
-                                suscipit ut a mauris. Phasellus semper felis sit amet ornare congue. <br /> Mauris
-                                bibendum, tortor eu interdum commodo, ex purus pulvinar sem, ut consequat nunc nisi at
-                                est.
-                              </p>
-                              <ul>
-                                <li>Length: 74cm</li>
-                                <li>Regular fit</li>
-                                <li>Notched lapels</li>
-                                <li>Twin button front fastening</li>
-                                <li>Front patch pockets; chest pocket</li>
-                                <li> Internal pockets</li>
-                              </ul>
+                              <div dangerouslySetInnerHTML={{ __html: product.description }} />
                             </div>
                           </div>
                           <div className='tab-pane fade' id='reviews' role='tabpanel'>
@@ -323,27 +327,27 @@ export const ProductScreen = () => {
                                       <ul className='d-flex'>
                                         <li>
                                           <a href='#'>
-                                            <i className='icon-star'></i>
+                                            <i className='icon-star' />
                                           </a>
                                         </li>
                                         <li>
                                           <a href='#'>
-                                            <i className='icon-star'></i>
+                                            <i className='icon-star' />
                                           </a>
                                         </li>
                                         <li>
                                           <a href='#'>
-                                            <i className='icon-star'></i>
+                                            <i className='icon-star' />
                                           </a>
                                         </li>
                                         <li>
                                           <a href='#'>
-                                            <i className='icon-star'></i>
+                                            <i className='icon-star' />
                                           </a>
                                         </li>
                                         <li>
                                           <a href='#'>
-                                            <i className='icon-star'></i>
+                                            <i className='icon-star' />
                                           </a>
                                         </li>
                                       </ul>
@@ -364,27 +368,27 @@ export const ProductScreen = () => {
                                 <ul className='d-flex'>
                                   <li>
                                     <a href='#'>
-                                      <i className='icon-star'></i>
+                                      <i className='icon-star' />
                                     </a>
                                   </li>
                                   <li>
                                     <a href='#'>
-                                      <i className='icon-star'></i>
+                                      <i className='icon-star' />
                                     </a>
                                   </li>
                                   <li>
                                     <a href='#'>
-                                      <i className='icon-star'></i>
+                                      <i className='icon-star' />
                                     </a>
                                   </li>
                                   <li>
                                     <a href='#'>
-                                      <i className='icon-star'></i>
+                                      <i className='icon-star' />
                                     </a>
                                   </li>
                                   <li>
                                     <a href='#'>
-                                      <i className='icon-star'></i>
+                                      <i className='icon-star' />
                                     </a>
                                   </li>
                                 </ul>

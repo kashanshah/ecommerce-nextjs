@@ -38,7 +38,7 @@ export const BestSellerHeader = (props: BestSellerHeaderProps) => {
                 aria-selected='false'
                 className={activeTabId === category.id && ' active'}
               >
-                {category.title}
+                {category.name}
               </a>
             </li>
           );

@@ -121,7 +121,7 @@ export const Header = (props: HeaderProps) => {
                               <span className='title'>Shop Layout</span>
                               <ul>
                                 <li>
-                                  <a href='shop-leftsidebar.html'>Left Sidebar</a>
+                                  <Link href='/product-category/decor-4/'>Decor</Link>
                                 </li>
                                 <li>
                                   <a href='shop-rightsidebar.html'>Right Sidebar</a>

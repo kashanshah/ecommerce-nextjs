@@ -15,7 +15,7 @@ export const BestSellerTabPanel = (props: BestSellerTabPanelProps) => {
   const { isLoading, isFetching, refetch, data } = useQuery(
     ['best-seller-products', categoryId],
     async () => {
-      const response = await axios.post('/api/products/list', { limit: 8, categoryId: categoryId });
+      const response = await axios.post('/api/products/list', { per_page: 8, categories: categoryId });
       return response?.data;
     },
     {

@@ -3715,10 +3715,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
+.price_box del,
 .price_box span.current_price {
   color: #ff2f2f;
 }
 
+.price_box ins,
 .price_box span.old_price {
   font-size: 14px;
   color: #999999;

@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Select } from 'antd';
 import { Skeleton } from '../skeleton';
+import { RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateConfig } from '../../redux/common-slice';
+import { toast } from 'react-toastify';
+import update = toast.update;
 
 type ShopFiltersProps = {
   totalProducts?: number;
@@ -9,8 +14,9 @@ type ShopFiltersProps = {
 
 export const ShopFilters = (props: ShopFiltersProps) => {
   const { totalProducts, isLoading } = props;
+  const dispatch = useDispatch();
 
-  const [isGrid, setIsGrid] = useState(true);
+  const { orderBy, isGridListing } = useSelector((state: RootState) => state.common);
 
   return (
     <div className='shop_toolbar_wrapper d-flex justify-content-between align-items-center'>
@@ -28,10 +34,20 @@ export const ShopFilters = (props: ShopFiltersProps) => {
       <div className=' sorting_by d-flex align-items-center'>
         <span style={{ marginInlineEnd: 15 }}>SORT BY :</span>
         <form className='select_option' action='#'>
-          <Select id='short' style={{ minWidth: 170 }} defaultValue={'popularity'}>
-            <Select.Option value='popularity'>Popularity</Select.Option>
-            <Select.Option value='price-asc'>Price: Low to High</Select.Option>
-            <Select.Option value='price-desc'>Price: High to Low</Select.Option>
+          <Select
+            id='short'
+            style={{ minWidth: 170 }}
+            value={orderBy.join(',')}
+            onChange={(val) => {
+              dispatch(updateConfig({ orderBy: val.split(',') }));
+            }}
+          >
+            <Select.Option value={'popularity,desc'}>Popularity</Select.Option>
+            <Select.Option value={'price,desc'}>Price: High to Low</Select.Option>
+            <Select.Option value={'price,asc'}>Price: Low to High</Select.Option>
+            <Select.Option value={'rating,desc'}>Rating: High to Low</Select.Option>
+            <Select.Option value={'rating,asc'}>Rating: Low to High</Select.Option>
+            <Select.Option value={'date,desc'}>Date</Select.Option>
           </Select>
         </form>
       </div>
@@ -44,12 +60,18 @@ export const ShopFilters = (props: ShopFiltersProps) => {
         <div className='shop_toolbar_btn'>
           <ul className='d-flex align-items-center'>
             <li>
-              <a onClick={() => setIsGrid(true)} className={`btn-grid-3 ${isGrid && ' active'}`}>
+              <a
+                onClick={() => dispatch(updateConfig({ isGridListing: true }))}
+                className={`btn-grid-3 ${isGridListing && ' active'}`}
+              >
                 <i className='ion-grid' />
               </a>
             </li>
             <li>
-              <a onClick={() => setIsGrid(false)} className={`btn-list ${!isGrid && ' active'}`}>
+              <a
+                onClick={() => dispatch(updateConfig({ isGridListing: false }))}
+                className={`btn-list ${!isGridListing && ' active'}`}
+              >
                 <i className='ion-navicon' />
               </a>
             </li>

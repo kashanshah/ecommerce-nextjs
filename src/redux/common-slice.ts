@@ -8,6 +8,8 @@ const commonSlice = createSlice({
     homeBGImage: randomNumberBetween(1, 12),
     isPageLoading: true,
     isSearchOpen: false,
+    orderBy: ['date', 'desc'],
+    isGridListing: true,
   },
   reducers: {
     updateHelloCss: (state, action) => {
@@ -22,9 +24,13 @@ const commonSlice = createSlice({
     updateIsSearchOpen: (state, action) => {
       state.isSearchOpen = action.payload;
     },
+    updateConfig: (state, action) => {
+      state.orderBy = action.payload.orderBy ?? state.orderBy;
+      state.isGridListing = action.payload.isGridListing ?? state.isGridListing;
+    },
   },
 });
 
-export const { updateHelloCss, updateBG, updateIsPageLoading, updateIsSearchOpen } = commonSlice.actions;
+export const { updateHelloCss, updateBG, updateIsPageLoading, updateIsSearchOpen, updateConfig } = commonSlice.actions;
 
 export default commonSlice.reducer;

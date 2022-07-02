@@ -109,7 +109,7 @@ export const ProductCard = (props: { product: IProduct }) => {
         </p>
         <ProductPrice priceHtml={product.price_html} />
         <div className='product_desc'>
-          <p>{product.short_description}</p>
+          <div dangerouslySetInnerHTML={{ __html: product.short_description }} />
         </div>
         <div className='add_to_cart'>
           <AddToCartBtn product={product} className='add_to_cart' />

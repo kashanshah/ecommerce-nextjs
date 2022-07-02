@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Breadcrumb } from '../../components/breadcrumb';
 import { MainBanner } from '../../components/main-banner/main-banner';
 import { ShopFilters } from '../../components/shop/shop-filters';
@@ -8,6 +8,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useGoToUrl } from '../../utils/url';
 import { Pagination } from '../../components/pagination';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 export const ShopScreen = () => {
   const {
@@ -15,15 +17,23 @@ export const ShopScreen = () => {
     query: { page = 1 },
   } = useRouter();
   const goToUrl = useGoToUrl();
+  const {
+    isGridListing,
+    orderBy: [orderBy, order],
+  } = useSelector((state: RootState) => state.common);
 
-  const [isGrid, setIsGrid] = useState(true);
-
-  const limit = 12;
+  const limit = 20;
 
   const { isLoading, data, isFetching, refetch } = useQuery(
     ['shop-products', Number(page as string)],
     async () => {
-      const response = await axios.post('/api/products/list', { per_page: limit, page: page, status: 'publish' });
+      const response = await axios.post('/api/products/list', {
+        per_page: limit,
+        page: page,
+        status: 'publish',
+        order: order,
+        orderby: orderBy,
+      });
       return response?.data;
     },
     {
@@ -37,7 +47,7 @@ export const ShopScreen = () => {
 
   useEffect(() => {
     refetch({ queryKey: ['shop-products', Number(page as string)] });
-  }, [query]);
+  }, [query, order, orderBy]);
 
   return (
     <div className='shop_section shop_reverse pt-sm-5'>
@@ -61,7 +71,7 @@ export const ShopScreen = () => {
 
             <ShopFilters totalProducts={data?.total} />
 
-            <div className={`row shop_wrapper ${isGrid ? 'grid_3' : 'grid_list'}`}>
+            <div className={`row shop_wrapper ${isGridListing ? 'grid_3' : 'grid_list'}`}>
               <div className='row'>
                 <ProductListing isLoading={isLoading || isFetching} products={data?.data} pageLimit={limit} />
               </div>

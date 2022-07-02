@@ -1,15 +1,26 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { updateConfig } from '../../redux/common-slice';
 
 export const MiniCart = () => {
+  const { isMiniCartActive } = useSelector((state: RootState) => state.common);
+  const dispatch = useDispatch();
+
   return (
-    <div className='mini_cart'>
+    <div className={`mini_cart ${isMiniCartActive ? 'active' : ''}`}>
       <div className='cart_gallery'>
         <div className='cart_close'>
           <div className='cart_text'>
             <h3>cart</h3>
           </div>
           <div className='mini_cart_close'>
-            <a href='#'>
+            <a
+              href='#'
+              onClick={() => {
+                dispatch(updateConfig({ isMiniCartActive: false }));
+              }}
+            >
               <i className='icon-close icons' />
             </a>
           </div>

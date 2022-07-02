@@ -7,7 +7,7 @@ import { MiniCart } from '../../components/mini-cart';
 import Link from 'next/link';
 import { PageSearchBox } from '../../components/page-search-box';
 import { useDispatch } from 'react-redux';
-import { updateIsSearchOpen } from '../../redux/common-slice';
+import { updateConfig, updateIsSearchOpen } from '../../redux/common-slice';
 import { SocialLinks } from '../../components/social-links';
 import { LanguageSwitcher } from '../../components/language-switcher';
 
@@ -219,7 +219,12 @@ export const Header = (props: HeaderProps) => {
                           <span className='item_count'>2</span>
                         </li>
                         <li className='shopping_cart'>
-                          <a href='#'>
+                          <a
+                            href='#'
+                            onClick={() => {
+                              dispatch(updateConfig({ isMiniCartActive: true }));
+                            }}
+                          >
                             <i className='icon-basket-loaded icons' />
                           </a>{' '}
                           <span className='item_count'>2</span>

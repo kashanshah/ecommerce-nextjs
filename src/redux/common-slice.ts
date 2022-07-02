@@ -8,6 +8,7 @@ const commonSlice = createSlice({
     homeBGImage: randomNumberBetween(1, 12),
     isPageLoading: true,
     isSearchOpen: false,
+    isMiniCartActive: false,
     orderBy: ['date', 'desc'],
     isGridListing: true,
   },
@@ -27,6 +28,7 @@ const commonSlice = createSlice({
     updateConfig: (state, action) => {
       state.orderBy = action.payload.orderBy ?? state.orderBy;
       state.isGridListing = action.payload.isGridListing ?? state.isGridListing;
+      state.isMiniCartActive = action.payload.isMiniCartActive ?? state.isMiniCartActive;
     },
   },
 });

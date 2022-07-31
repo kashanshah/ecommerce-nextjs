@@ -13,7 +13,7 @@ export const ProductTags = (props: { tags: IProduct['tags'] }) => {
     <ul className='d-flex'>
       {tags?.map((tag) => {
         return (
-          <li key={tag.slug}>
+          <li key={tag.slug} className='comma-after'>
             <Link href={`/tags/${tag.slug}-${tag.id}`}>{tag.name}</Link>
           </li>
         );

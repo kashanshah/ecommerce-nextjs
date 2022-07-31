@@ -19,7 +19,7 @@ export type IProduct = {
   date_created_gmt: string;
   date_modified: string;
   date_modified_gmt: string;
-  type: string;
+  type: 'simple' | 'grouped' | 'external' | 'variable';
   status: string;
   featured: boolean;
   catalog_visibility: string;
@@ -132,7 +132,7 @@ export type IProduct = {
     options: string[];
   }[];
   default_attributes: [];
-  variations: [];
+  variations: number[];
   grouped_products: [];
   menu_order: number;
   meta_data: [];

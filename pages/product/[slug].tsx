@@ -30,5 +30,9 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
   const { data } = await axios.get(`${origin}/api/products/${matches[2]}`);
 
+  if (data?.variations?.length > 0) {
+    // const { data: variations } = await axios.get(`${origin}/api/products/${matches[2]}`);
+  }
+
   return { props: { product: data?.data } };
 }

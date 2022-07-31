@@ -200,7 +200,7 @@ export const ProductScreen = (props: { product: IProduct }) => {
                             <ul className='d-flex'>
                               {product.categories.map((cat, index) => {
                                 return (
-                                  <li key={cat.slug}>
+                                  <li key={cat.slug} className='comma-after'>
                                     <Link
                                       className={index !== product.categories.length - 1 ? 'comma-after' : ''}
                                       href={`/product-category/${cat.slug}-${cat.id}`}
@@ -496,7 +496,7 @@ export const ProductScreen = (props: { product: IProduct }) => {
                                 src='https://www.youtube.com/embed/BUWzX78Ye_8'
                                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                                 allowFullScreen
-                              ></iframe>
+                              />
                             </div>
                           </div>
                         </div>

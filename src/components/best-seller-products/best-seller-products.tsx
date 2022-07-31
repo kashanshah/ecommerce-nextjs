@@ -73,7 +73,7 @@ export const BestSellerProducts = (props: BestSellerProductsProps) => {
         </div>
         <div className='product_container'>
           <div className='tab-content'>
-            {data?.data?.map((category, i) => (
+            {data?.data?.map?.((category, i) => (
               <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={category.id} isActive={activeTab === category.id} />
             ))}
           </div>

@@ -37,3 +37,6 @@
 .comma-after:after {
   content: ', ';
 }
+.comma-after:last-child:after {
+  content: '';
+}

@@ -9,6 +9,7 @@ const commonSlice = createSlice({
     isPageLoading: true,
     isSearchOpen: false,
     isMiniCartActive: false,
+    isMobileMenuActive: false,
     orderBy: ['popularity', 'desc'],
     isGridListing: true,
   },
@@ -22,6 +23,9 @@ const commonSlice = createSlice({
     updateIsPageLoading: (state, action) => {
       state.isPageLoading = action.payload;
     },
+    updateIsMobileMenuActive: (state, action) => {
+      state.isMobileMenuActive = action.payload;
+    },
     updateIsSearchOpen: (state, action) => {
       state.isSearchOpen = action.payload;
     },
@@ -29,10 +33,18 @@ const commonSlice = createSlice({
       state.orderBy = action.payload.orderBy ?? state.orderBy;
       state.isGridListing = action.payload.isGridListing ?? state.isGridListing;
       state.isMiniCartActive = action.payload.isMiniCartActive ?? state.isMiniCartActive;
+      state.isSearchOpen = action.payload.isSearchOpen ?? state.isSearchOpen;
     },
   },
 });
 
-export const { updateHelloCss, updateBG, updateIsPageLoading, updateIsSearchOpen, updateConfig } = commonSlice.actions;
+export const {
+  updateHelloCss,
+  updateBG,
+  updateIsMobileMenuActive,
+  updateIsPageLoading,
+  updateIsSearchOpen,
+  updateConfig,
+} = commonSlice.actions;
 
 export default commonSlice.reducer;

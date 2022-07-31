@@ -1,26 +1,34 @@
 import { PageWrapper } from '../../layouts/page-wrapper';
-import { HeroCarousel } from '../../components/hero-carousel';
 import { Header } from '../../layouts/header/header';
 import { trans } from '../../utils/trans';
 import { constants } from '../../utils/constants';
 import { Footer } from '../../layouts/footer';
-import { SubscribeToNewsletter } from '../../components/subscribe-to-newsletter';
-import { BannersSection } from '../../components/banners-section';
 import React from 'react';
-import { BestSellerProducts } from '../../components/best-seller-products/best-seller-products';
+import { PageSearchBox } from '../../components/page-search-box';
+import { MegaMenu } from '../../components/mega-menu/mega-menu';
 
 export const HomeScreen = () => {
   return (
     <PageWrapper>
+      <PageSearchBox />
       <Header title={trans(constants?.seo?.title)} />
-      <HeroCarousel />
+      <div className='xts-site-content'>
+        <div className='container'>
+          <div className='row row-spacing-40 xts-sidebar-hidden-md'>
+            <div className='col-md-3'>
+              <MegaMenu />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*<HeroCarousel />*/}
 
-      <BannersSection />
-      <BannersSection type='two' title='Featured Collection' />
+      {/*<BannersSection />*/}
+      {/*<BannersSection type='two' title='Featured Collection' />*/}
 
-      <BestSellerProducts />
+      {/*<BestSellerProducts />*/}
 
-      <SubscribeToNewsletter />
+      {/*<SubscribeToNewsletter />*/}
       <Footer />
     </PageWrapper>
   );

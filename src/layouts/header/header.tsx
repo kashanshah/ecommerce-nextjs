@@ -4,12 +4,11 @@ import { constants } from '../../utils/constants';
 import { trans } from '../../utils/trans';
 import { useRouter } from 'next/router';
 import { MiniCart } from '../../components/mini-cart';
-import Link from 'next/link';
-import { PageSearchBox } from '../../components/page-search-box';
 import { useDispatch } from 'react-redux';
 import { updateConfig, updateIsSearchOpen } from '../../redux/common-slice';
-import { SocialLinks } from '../../components/social-links';
-import { LanguageSwitcher } from '../../components/language-switcher';
+import Link from 'next/link';
+import { Image } from 'antd';
+import { MobileHeader } from './mobile-header';
 
 type HeaderProps = {
   [key: string]: any;
@@ -49,200 +48,139 @@ export const Header = (props: HeaderProps) => {
 
       <MiniCart />
 
-      <header className='header_section'>
-        <div className='header_top'>
-          <div className='container custom-space'>
-            <div className='row'>
-              <div className='col-12'>
-                <div className='header_top_inner d-flex justify-content-between align-items-sm-center'>
-                  <div className='header_contact_info'>
-                    <ul className='d-flex'>
-                      <li className='text-white'>
-                        <i className='icons icon-phone' />{' '}
-                        <a href={`tel:${constants?.phone.replaceAll('-', '').replaceAll(' ', '')}`}>
-                          {constants?.phone}
-                        </a>
+      <header className='xts-header xts-with-shadow xts-scroll-stick xts-sticky-real'>
+        <div className='xts-header-main xts-header-inner'>
+          <div className='xts-header-row xts-general-header xts-sticky-on xts-without-bg xts-layout-equal-sides'>
+            <div className='container'>
+              <div className='xts-header-row-inner'>
+                <div className='xts-header-col xts-start xts-desktop'>
+                  <div className='xts-header-nav-wrapper xts-nav-wrapper xts-textalign-left'>
+                    <ul
+                      id='menu-main-menu-simple'
+                      className='menu xts-nav xts-nav-main xts-direction-h xts-style-default xts-gap-m'
+                    >
+                      <li
+                        id='menu-item-4274'
+                        className='menu-item menu-item-type-post_type menu-item-object-page menu-item-4274 item-level-0 xts-item-mega-menu xts-event-hover'
+                      >
+                        <Link href='/shop' className='xts-nav-link'>
+                          <a>
+                            <span className='xts-nav-text'>Shop</span>
+                          </a>
+                        </Link>
                       </li>
-                      <li className='text-white'>
-                        <i className='icon-envelope-letter icons' />{' '}
-                        <a href={`mailto:${constants?.email}`}>{constants?.email}</a>
+                      <li
+                        id='menu-item-4353'
+                        className='menu-item menu-item-type-post_type menu-item-object-page menu-item-4353 item-level-0 xts-event-hover'
+                      >
+                        <Link href='/about' className='xts-nav-link'>
+                          <a>
+                            <span className='xts-nav-text'>About</span>
+                          </a>
+                        </Link>
+                      </li>
+                      <li
+                        id='menu-item-4247'
+                        className='menu-item menu-item-type-post_type menu-item-object-page menu-item-4247 item-level-0 xts-event-hover'
+                      >
+                        <Link href='/contact' className='xts-nav-link'>
+                          <a>
+                            <span className='xts-nav-text'>Contacts</span>
+                          </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
-                  <div className='free_shipping_text'>
-                    <p className='text-white'>Delivery all over Pakistan 🇵🇰</p>
-                  </div>
-                  <div className='header_top_sidebar d-flex align-items-center'>
-                    <div className='d-flex header_social'>
-                      <span>Follow us</span>
-                      <SocialLinks />
-                    </div>
-                    <div className='language_currency'>
-                      <ul className='d-flex'>
-                        <li className='language'>
-                          <a href='#'>
-                            {locale} <i className='icon-right ion-ios-arrow-down' />
-                          </a>
-                          <LanguageSwitcher />
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+
+                <div className='xts-header-col xts-center xts-desktop'>
+                  <div className='xts-logo xts-sticky-logo'>
+                    <Link href='/home' rel='home'>
+                      <a>
+                        <Image
+                          className='xts-logo-main'
+                          src='/wp-content/uploads/2022/07/56654e7e-7918-402d-823f-d9b25b6c466c-400x167.png'
+                          alt='Hurf'
+                          style={{ maxWidth: 150 }}
+                          preview={false}
+                        />
+                        <Image
+                          className='xts-logo-second'
+                          src='/wp-content/uploads/2022/07/56654e7e-7918-402d-823f-d9b25b6c466c-400x167.png'
+                          alt='Hurf'
+                          style={{ maxWidth: 150 }}
+                          preview={false}
+                        />
+                      </a>
+                    </Link>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className='main_header sticky-header'>
-          <div className='container custom-space'>
-            <div className='row'>
-              <div className='col-12'>
-                <div className='header_container d-flex justify-content-between align-items-center'>
-                  <div className='header_logo cursor-pointer'>
-                    <a className='sticky_none '>
-                      <Link className='cursor-pointer' href='/home'>
-                        <img src='/assets/img/logo/logo.png' alt='' />
-                      </Link>
+                <div className='xts-header-col xts-end xts-desktop'>
+                  <div className='xts-header-my-account xts-header-el xts-style-icon xts-opener'>
+                    <a href='/my-account/'>
+                      <span className='xts-header-el-icon'></span>
+
+                      <span className='xts-header-el-label'>Login / Register </span>
                     </a>
                   </div>
-                  <div className='main_menu d-none d-lg-block'>
-                    <nav className='position-relative'>
-                      <ul className='d-flex'>
-                        <li>
-                          <Link className='link' href='/home'>
-                            <a>home</a>
-                          </Link>
-                        </li>
-                        <li className='megamenu-holder'>
-                          <Link href='/shop'>shop</Link>
-                          <ul className='sub_menu megamenu'>
-                            <li>
-                              <span className='title'>Shop Layout</span>
-                              <ul>
-                                <li>
-                                  <Link href='/product-category/decor-4/'>Decor</Link>
-                                </li>
-                                <li>
-                                  <a href='shop-rightsidebar.html'>Right Sidebar</a>
-                                </li>
-                                <li>
-                                  <a href='shop-list-leftsidebar.html'>List Left Sidebar</a>
-                                </li>
-                                <li>
-                                  <a href='shop-list-rightsidebar.html'>List Right Sidebar</a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <span className='title'>Shop Related</span>
-                              <ul>
-                                <li>
-                                  <a href='cart.html'>Cart</a>
-                                </li>
-                                <li>
-                                  <a href='wishlist.html'>Wishlist</a>
-                                </li>
-                                <li>
-                                  <a href='compare.html'>Compare</a>
-                                </li>
-                                <li>
-                                  <a href='checkout.html'>Checkout</a>
-                                </li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <Link href='/shop'>sale</Link>
-                        </li>
-                        <li>
-                          <a href='#'>pages</a>
-                          <ul className='sub_menu'>
-                            <li>
-                              <a href='faq.html'>FAQ</a>
-                            </li>
-                            <li>
-                              <a href='404.html'>Error 404</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href='blog.html'>blog</a>
-                          <ul className='sub_menu'>
-                            <li>
-                              <a href='blog.html'>Blog Pages</a>
-                            </li>
-                            <li>
-                              <a href='blog-details.html'>Blog Details</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <Link href='/contact' className='link'>
-                            <a>Contact</a>
-                          </Link>
-                        </li>
-                      </ul>
-                    </nav>
+
+                  <div className='xts-header-wishlist xts-header-el xts-style-icon xts-design-count-text'>
+                    <a href='/wishlist/'>
+                      <span className='xts-header-el-icon xts-icon-default'>
+                        <span className='xts-wishlist-count'>0 </span>
+                      </span>
+
+                      <span className='xts-header-el-label'>Wishlist </span>
+                    </a>
                   </div>
-                  <div className='with-canvas'>
-                    <div className='header_account'>
-                      <ul className='d-flex'>
-                        <li className='header_search'>
-                          <a href='#' onClick={() => dispatch(updateIsSearchOpen(true))}>
-                            <i className='icon-magnifier icons' />
-                          </a>
-                        </li>
-                        <li className='account_link'>
-                          <a href='#'>
-                            <i className='icon-user icons' />
-                          </a>
-                          <ul className='dropdown_account_link'>
-                            <li>
-                              <a href='my-account.html'>My Account</a>
-                            </li>
-                            <li>
-                              <a href='login-register.html'>Login | Register</a>
-                            </li>
-                            <li>
-                              <Link href='/contact'>
-                                <a>Contact</a>
-                              </Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href='wishlist.html'>
-                            <i className='icon-heart icons' />
-                          </a>{' '}
-                          <span className='item_count'>2</span>
-                        </li>
-                        <li className='shopping_cart'>
-                          <a
-                            href='#'
-                            onClick={() => {
-                              dispatch(updateConfig({ isMiniCartActive: true }));
-                            }}
-                          >
-                            <i className='icon-basket-loaded icons' />
-                          </a>{' '}
-                          <span className='item_count'>2</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className='canvas_open'>
-                      <a href='/'>
-                        <i className='ion-navicon' />
-                      </a>
-                    </div>
+
+                  <div className='xts-header-compare xts-header-el xts-style-icon xts-design-count-text'>
+                    <Link href='/compare'>
+                      <>
+                        <span className='xts-header-el-icon xts-icon-default'>
+                          <span className='xts-compare-count'>0 </span>
+                        </span>
+                        <span className='xts-header-el-label'>Compare </span>
+                      </>
+                    </Link>
+                  </div>
+
+                  <div className='xts-header-cart xts-header-el xts-design-default xts-style-icon-text xts-opener'>
+                    <a href='#' onClick={() => dispatch(updateConfig({ isMiniCartActive: true }))}>
+                      <span className='xts-header-el-icon xts-icon-cart'></span>
+
+                      <span className='xts-header-el-label'>
+                        <span className='xts-cart-count'>
+                          1<span>item </span>
+                        </span>
+
+                        <span className='xts-cart-divider'>/</span>
+                        <span className='xts-cart-subtotal'>
+                          <span className='woocommerce-Price-amount amount'>
+                            <bdi>
+                              <span className='woocommerce-Price-currencySymbol'>&#8360;</span>&nbsp;119
+                            </bdi>
+                          </span>{' '}
+                        </span>
+                      </span>
+                    </a>
+                  </div>
+
+                  <div className='xts-header-search xts-header-el xts-display-full-screen xts-style-icon'>
+                    <a href='#' onClick={() => dispatch(updateIsSearchOpen(true))}>
+                      <span className='xts-header-el-icon'></span>
+
+                      <span className='xts-header-el-label'>Search </span>
+                    </a>
                   </div>
                 </div>
+
+                <MobileHeader />
               </div>
             </div>
           </div>
         </div>
-        <PageSearchBox />
       </header>
     </>
   );

@@ -9,8 +9,6 @@ import { constants } from '../src/utils/constants';
 import { GoogleAnalytics } from '../src/components/google-analytics';
 import { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
-import 'antd/dist/antd.css';
-import 'styles/style.css';
 import 'styles/globals.css';
 import { ReactQueryDevtools } from 'react-query/devtools';
 

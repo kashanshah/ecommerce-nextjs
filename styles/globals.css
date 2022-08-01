@@ -1,0 +1,23 @@
+.xts-slides {
+  position: relative;
+}
+
+.xts-slide-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slider-img {
+}
+
+@media (max-width: 768px) {
+  .slider-img {
+    height: 500px;
+    object-fit: cover;
+  }
+}

@@ -10,6 +10,8 @@ import { GoogleAnalytics } from '../src/components/google-analytics';
 import { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 import 'styles/globals.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();

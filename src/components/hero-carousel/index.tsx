@@ -1,6 +1,6 @@
 import React from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
+import Slider from 'react-slick';
+import { Image } from 'antd';
 import Link from 'next/link';
 
 export const HeroCarousel = () => {
@@ -26,74 +26,114 @@ export const HeroCarousel = () => {
   ];
 
   return (
-    <section className='slider_section'>
-      <div className='slider_area slick_slider_activation'>
-        <Carousel
-          showStatus={false}
-          showThumbs={false}
-          dynamicHeight
-          emulateTouch
-          infiniteLoop
-          className='slider_area slick_slider_activation slick-initialized slick-slider slick-dotted'
-          renderArrowPrev={(clickHandler) => {
-            return (
-              <button className='slick-button prev_arrow slick-arrow' onClick={clickHandler}>
-                <i className='icon-arrow-left icons' />
-              </button>
-            );
-          }}
-          renderArrowNext={(clickHandler) => {
-            return (
-              <button className='slick-button next_arrow slick-arrow' onClick={clickHandler}>
-                <i className='icon-arrow-right icons' />
-              </button>
-            );
-          }}
-        >
-          <div
-            className='single_slider d-flex align-items-center'
-            style={{ background: 'url("/assets/img/slider/slider1.jpg")' }}
-          >
-            <div className='container'>
-              <div className='row'>
-                <div className='col-lg-6 col-md-7'>
-                  <div className='slider_text'>
-                    <span>Lookbook</span>
-                    <h1>fashion trend for autum girls with vibes</h1>
-                    <p>
-                      We love seeing how our Edon wearers like <br /> to wear their Norda
-                    </p>
-                    <Link className='btn btn-primary' href='/shop'>
-                      Explore Now
+    <div className='axts-slider'>
+      <Slider>
+        <div id='xts-slide-3373' className='xts-slides'>
+          <Image
+            src='/wp-content/uploads/2022/04/d-4-slide-bg-2.jpg'
+            className='img-responsive slider-img'
+            alt='slider 1'
+            preview={false}
+          />
+          <div className='xts-slide-container xts-items-center xts-justify-center'>
+            <section className='xts-negative-gap'>
+              <div className='xts-scheme-light xts-textalign-center'>
+                <div className='elementor-widget-container'>
+                  <p>Modern and stylish outfit</p>
+                  <div className='xts-section-heading xts-reset-mb-10 xts-reset-last xts-textalign-center xts-scheme-light'>
+                    <h4 className='xts-section-title title xts-design-default xts-fontsize-l'>
+                      <span className='xts-section-title-text'>New Season Collection</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div className='elementor-element elementor-element-5a57d57 elementor-widget elementor-widget-xts_button'>
+                <div className='elementor-widget-container'>
+                  <div className='xts-button-wrapper xts-textalign-center'>
+                    <Link
+                      className='xts-button xts-size-m xts-style-default xts-color-primary xts-shape-rectangle'
+                      href='/shop'
+                    >
+                      <a className='xts-button xts-size-m xts-style-default xts-color-primary xts-shape-rectangle'>
+                        <span className='xts-button-text'>To Shop</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-          <div
-            className='single_slider d-flex align-items-center'
-            style={{ background: 'url("/assets/img/slider/slider2.jpg")' }}
-          >
-            <div className='container'>
-              <div className='row'>
-                <div className='col-lg-6 col-md-7'>
-                  <div className='slider_text text-white'>
-                    <span>Handbag</span>
-                    <h1>Men Collection Preview</h1>
-                    <p className='text-white'>
-                      The collection grows each year with original stories and design features by Edons employees.
-                    </p>
-                    <Link className='btn btn-primary' href='/shop'>
-                      Explore Now
+        </div>
+        <div id='xts-slide-3379' className='xts-slides'>
+          <Image
+            src='/wp-content/uploads/2022/04/d-4-slide-bg-1.jpg'
+            className='img-responsive slider-img'
+            alt='slider 2'
+            preview={false}
+          />
+          <div className='xts-slide-container xts-items-center xts-justify-center'>
+            <section className='xts-negative-gap'>
+              <div className='xts-scheme-light xts-textalign-center'>
+                <div className='elementor-widget-container'>
+                  <p>Latest trending looks</p>
+                  <div className='xts-section-heading xts-reset-mb-10 xts-reset-last xts-textalign-center xts-scheme-light'>
+                    <h4 className='xts-section-title title xts-design-default xts-fontsize-l'>
+                      <span className='xts-section-title-text'>New Arrivals Jackets for Women</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div className='elementor-element elementor-element-5a57d57 elementor-widget elementor-widget-xts_button'>
+                <div className='elementor-widget-container'>
+                  <div className='xts-button-wrapper xts-textalign-center'>
+                    <Link href='/shop'>
+                      <a className='xts-button xts-size-m xts-style-default xts-color-primary xts-shape-rectangle'>
+                        <span className='xts-button-text'>To Shop</span>
+                      </a>
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </Carousel>
-      </div>
-    </section>
+        </div>
+        <div id='xts-slide-3383' className='xts-slides'>
+          <Image
+            src='/wp-content/uploads/2022/04/d-4-slide-bg-3.jpg'
+            className='img-responsive slider-img'
+            alt='slider 3'
+            preview={false}
+          />
+          <div className='xts-slide-container xts-items-center xts-justify-center'>
+            <section className='xts-negative-gap'>
+              <div className='xts-scheme-light xts-textalign-center'>
+                <div className='elementor-widget-container'>
+                  <p>Clothes that you like</p>
+                  <div className='xts-section-heading xts-reset-mb-10 xts-reset-last xts-textalign-center xts-scheme-light'>
+                    <h4 className='xts-section-title title xts-design-default xts-fontsize-l'>
+                      <span className='xts-section-title-text'>New Collection Of Basic Clothes</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div className='elementor-element elementor-element-5a57d57 elementor-widget elementor-widget-xts_button'>
+                <div className='elementor-widget-container'>
+                  <div className='xts-button-wrapper xts-textalign-center'>
+                    <Link
+                      className='xts-button xts-size-m xts-style-default xts-color-primary xts-shape-rectangle'
+                      href='/shop'
+                    >
+                      <a className='xts-button xts-size-m xts-style-default xts-color-primary xts-shape-rectangle'>
+                        <span className='xts-button-text'>To Shop</span>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </Slider>
+    </div>
   );
 };

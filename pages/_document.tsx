@@ -96,6 +96,27 @@ export default class MyDocument extends Document {
             type='text/css'
             media='all'
           />
+          <link
+            rel='stylesheet'
+            id='elementor-post-3383-css'
+            href='/wp-content/uploads/elementor/css/post-3383.css?ver=1658597091'
+            type='text/css'
+            media='all'
+          />
+          <link
+            rel='stylesheet'
+            id='elementor-post-3373-css'
+            href='/wp-content/uploads/elementor/css/post-3373.css?ver=1658597091'
+            type='text/css'
+            media='all'
+          />
+          <link
+            rel='stylesheet'
+            id='elementor-post-3379-css'
+            href='/wp-content/uploads/elementor/css/post-3379.css?ver=1658597091'
+            type='text/css'
+            media='all'
+          />
         </Head>
         <body className='theme-xts-tethys woocommerce-no-js xts-cat-accordion xts-sticky-navbar-enabled elementor-default elementor-kit-6'>
           <div className='xts-site-wrapper'>

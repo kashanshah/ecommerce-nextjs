@@ -6,6 +6,7 @@ import { Footer } from '../../layouts/footer';
 import React from 'react';
 import { PageSearchBox } from '../../components/page-search-box';
 import { MegaMenu } from '../../components/mega-menu/mega-menu';
+import { HeroCarousel } from '../../components/hero-carousel';
 
 export const HomeScreen = () => {
   return (
@@ -17,6 +18,9 @@ export const HomeScreen = () => {
           <div className='row row-spacing-40 xts-sidebar-hidden-md'>
             <div className='col-md-3'>
               <MegaMenu />
+            </div>
+            <div className='col-md-9'>
+              <HeroCarousel />
             </div>
           </div>
         </div>

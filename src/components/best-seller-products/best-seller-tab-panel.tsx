@@ -36,7 +36,7 @@ export const BestSellerTabPanel = (props: BestSellerTabPanelProps) => {
   }, [categoryId, isActive]);
 
   return (
-    <div className={`tab-pane ${isActive && ' show active'}`} role='tabpanel'>
+    <div style={{ display: isActive ? 'block' : 'none' }} className={`tab-pane ${isActive && ' show active'}`}>
       <div className='row'>
         <ProductListing isLoading={isLoading || isFetching} products={data?.data} pageLimit={limit} />
       </div>

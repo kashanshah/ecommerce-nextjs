@@ -20,11 +20,7 @@ export const ProductListing = (props: ProductListingProps) => {
       <>
         {[...Array.from({ length: pageLimit }, (_, i) => i)]?.map((index) => {
           return (
-            <div
-              key={index}
-              className={isGridListing ? 'col-lg-3 col-md-3 col-sm-6' : 'col-12 d-flex'}
-              style={{ textAlign: 'center' }}
-            >
+            <div key={`shop-product-${index}`} className={isGridListing ? 'col-lg-2' : 'col-12 mb-3'}>
               <SkeletonProductCard key={index} />
             </div>
           );

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import { Skeleton } from '../skeleton';
 
@@ -25,28 +24,30 @@ export const BestSellerHeader = (props: BestSellerHeaderProps) => {
   }
 
   return (
-    <div className='product_tab_btn d-flex'>
-      <ul className='nav' id='myTab' role='tablist'>
-        {categories?.map((category, index) => {
-          return (
-            <li key={`${category.id}-${index}`}>
-              <a
-                data-bs-toggle='tab'
-                onClick={() => onChange(category.id)}
-                role='tab'
-                aria-controls={category.id}
-                aria-selected='false'
-                className={activeTabId === category.id && ' active'}
+    <>
+      <div className='xts-nav-wrapper xts-nav-tabs-wrapper xts-mb-action-swipe'>
+        <ul className='xts-nav xts-nav-tabs xts-style-underline xts-icon-left'>
+          {categories?.map((category, index) => {
+            return (
+              <li
+                key={`${category.id}-${index}`}
+                className={`xts-products-tab-title ${activeTabId === category.id ? 'xts-active' : ''}`}
+                style={{ cursor: 'pointer' }}
               >
-                {category.name}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <div className='all_product'>
-        <Link href='/shop'>All Product</Link>
+                <a onClick={() => onChange(category.id)} className='xts-nav-link'>
+                  <span className='xts-nav-text'>{category?.name}</span>
+                </a>
+              </li>
+            );
+          })}
+          <li className='xts-products-tab-title xts-active'>
+            <a className='xts-nav-link' href='/shop'>
+              <span className='xts-nav-text'>All Product</span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
+      <div className='xts-tabs-loader' />
+    </>
   );
 };

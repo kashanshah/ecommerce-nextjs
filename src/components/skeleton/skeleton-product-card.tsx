@@ -8,13 +8,16 @@ export const SkeletonProductCard = () => {
 
   if (isGridListing) {
     return (
-      <>
-        <Skeleton style={{ height: 300 }} />
-        <Skeleton style={{ height: 10, width: 90, margin: '10px auto 0' }} />
-        <Skeleton style={{ height: 20, width: 200, margin: '10px auto 0' }} />
-        <Skeleton style={{ height: 20, width: 80, margin: '10px auto 0' }} />
-        <Skeleton style={{ height: 30, width: 100, margin: '10px auto 0' }} />
-      </>
+      <div style={{ width: '100%' }}>
+        <Skeleton style={{ height: 250 }} />
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+          <div style={{ width: '80%' }}>
+            <Skeleton style={{ height: 15, width: '80%' }} />
+            <Skeleton style={{ height: 15, width: '60%', margin: '10px 0 0' }} />
+          </div>
+          <Skeleton style={{ height: 30, width: '20%' }} />
+        </div>
+      </div>
     );
   }
 

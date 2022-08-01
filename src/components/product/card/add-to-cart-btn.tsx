@@ -11,39 +11,31 @@ export const AddToCartBtn = (props: { product: IProduct; className?: string }) =
 
   if (product?.type === 'external') {
     return (
-      <div className={className}>
-        <button className='btn btn-primary' onClick={() => window?.open(product?.external_url, '_blank')}>
-          {product?.button_text || 'Add To Cart'}
-        </button>
-      </div>
+      <button className={className} onClick={() => window?.open(product?.external_url, '_blank')}>
+        {product?.button_text || 'Add To Cart'}
+      </button>
     );
   }
 
   if (product?.type === 'variable') {
     return (
-      <div className={className}>
-        <Link className='btn btn-primary' href={`/product/${product?.slug}-${product?.id}`}>
-          <>Select Options</>
-        </Link>
-      </div>
+      <Link className={className} href={`/product/${product?.slug}-${product?.id}`}>
+        <>Select Options</>
+      </Link>
     );
   }
 
   if (product?.type === 'grouped') {
     return (
-      <div className={className}>
-        <Link className='btn btn-primary' href={`/product/${product?.slug}-${product?.id}`}>
-          <>View Products</>
-        </Link>
-      </div>
+      <Link className={className} href={`/product/${product?.slug}-${product?.id}`}>
+        <>View Products</>
+      </Link>
     );
   }
 
   return (
-    <div className={className}>
-      <button className='btn btn-primary' onClick={() => alert('Add to cart' + product?.name)}>
-        {product?.button_text || 'Add To Cart'}
-      </button>
-    </div>
+    <button className={className} onClick={() => alert('Add to cart' + product?.name)}>
+      {product?.button_text || 'Add To Cart'}
+    </button>
   );
 };

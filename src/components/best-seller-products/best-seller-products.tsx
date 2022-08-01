@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { BestSellerTabPanel } from './best-seller-tab-panel';
 import { useQuery } from 'react-query';
 import axios, { AxiosError } from 'axios';
-import { BestSellerLoading } from './best-seller-loading';
 import { BestSellerHeader } from './best-seller-header';
 
 type BestSellerProductsProps = {
+  preTitle?: string;
   title?: string;
 };
 
 export const BestSellerProducts = (props: BestSellerProductsProps) => {
-  const { title = 'best selling items' } = props;
+  const { preTitle = 'Choose top trending items', title = 'Our Products' } = props;
 
   const [activeTab, setActiveTab] = useState('all');
 
-  const { isLoading, isError, error, data } = useQuery<any, AxiosError>(
+  const { isLoading, data } = useQuery<any, AxiosError>(
     'parent-categories',
     async () => {
       const response = await axios.post('/api/categories/list', {
@@ -37,33 +37,16 @@ export const BestSellerProducts = (props: BestSellerProductsProps) => {
     }
   );
 
-  if (isLoading) {
-    return <BestSellerLoading />;
-  }
-
-  if (isError) {
-    return (
-      <section className='product_section'>
-        <div className='container'>
-          <div className='product_header d-flex justify-content-center mb-45'>
-            <div className='section_title text-center'>
-              <h2>Oops! Something went wrong.</h2>
-              <p>{error?.message}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className='product_section'>
-      <div className='container'>
-        <div className='product_header d-flex justify-content-between mb-45'>
-          <div className='section_title'>
-            <h2>{title}</h2>
+      <div className='xts-products-tabs'>
+        <div className={`xts-tabs-header xts-design-by-sides ${isLoading ? 'xts-loading' : ''}`}>
+          <div className='xts-tabs-title-wrapper'>
+            <div className='xts-tabs-subtitle'>{preTitle}</div>
+            <h3 className='xts-tabs-title xts-fontsize-xl'>
+              <span>{title}</span>
+            </h3>
           </div>
-
           <BestSellerHeader
             categories={data?.data}
             isLoading={isLoading}
@@ -71,12 +54,11 @@ export const BestSellerProducts = (props: BestSellerProductsProps) => {
             activeTabId={activeTab}
           />
         </div>
-        <div className='product_container'>
-          <div className='tab-content'>
-            {data?.data?.map?.((category, i) => (
-              <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={category.id} isActive={activeTab === category.id} />
-            ))}
-          </div>
+
+        <div className={`xts-products-tab-content ${isLoading ? 'xts-loading' : ''}`}>
+          {data?.data?.map?.((category, i) => (
+            <BestSellerTabPanel key={`tab-pane-${i}`} categoryId={category.id} isActive={activeTab === category.id} />
+          ))}
         </div>
       </div>
     </section>

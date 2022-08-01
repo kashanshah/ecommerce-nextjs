@@ -7,6 +7,8 @@ import React from 'react';
 import { PageSearchBox } from '../../components/page-search-box';
 import { MegaMenu } from '../../components/mega-menu/mega-menu';
 import { HeroCarousel } from '../../components/hero-carousel';
+import { BannerImages } from '../../components/banner-images/banner-images';
+import { BestSellerProducts } from '../../components/best-seller-products/best-seller-products';
 
 export const HomeScreen = () => {
   return (
@@ -22,15 +24,16 @@ export const HomeScreen = () => {
             <div className='col-md-9'>
               <HeroCarousel />
             </div>
+            <div className='col-md-12'>
+              <BannerImages />
+
+              <BestSellerProducts />
+            </div>
           </div>
         </div>
       </div>
-      {/*<HeroCarousel />*/}
 
-      {/*<BannersSection />*/}
       {/*<BannersSection type='two' title='Featured Collection' />*/}
-
-      {/*<BestSellerProducts />*/}
 
       {/*<SubscribeToNewsletter />*/}
       <Footer />
